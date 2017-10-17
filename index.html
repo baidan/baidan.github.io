@@ -2,40 +2,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh">
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <html>
+
 <head>
     <title>摄氏度计算</title>
 </head>
 
 <body>
     <h3>摄氏度计算华氏度</h3>
-    <div >摄氏度:<input type="text" id="centigrade" name="centigrade" value=" "/><button id="btn_count" onclick="contC2F()" >计算</button><button id="btn_clear" onclick="clearInput()" >清除</button></div>
+    <div>摄氏度:<input type="text" id="centigrade" name="centigrade" value=" " /><button id="btn_count" onclick="contC2F()">计算</button><button id="btn_clear" onclick="clearInput()">清除</button></div>
     <br/>
-    <div >华氏度:<input type="text" id="fahrenheit"/></div><br/>
+    <div>华氏度:<input type="text" id="fahrenheit" /></div><br/>
 
 
+    <div>自定义测试</div>
 
     <script>
         var centigrade_ = $id("centigrade");
         var fahrenheit_ = $id("fahrenheit");
-        function $id(id){
+
+        function $id(id) {
             return document.getElementById(id);
         }
+
         function contC2F() {
             var reg = new RegExp("^[0-9]*$");
-            if(centigrade_.value == " " || centigrade_.value == null){
+            if (centigrade_.value == " " || centigrade_.value == null) {
                 centigrade_.value = "不能为空，请输入数字";
                 return;
             }
-            if(!reg.test(centigrade_.value)){
+            if (!reg.test(centigrade_.value)) {
                 centigrade_.value = "只能输入数字";
                 return;
             }
-            fahrenheit_.value=9/5*centigrade_.value+32;
+            fahrenheit_.value = 9 / 5 * centigrade_.value + 32;
         }
 
         function clearInput() {
-            var centigrade = centigrade_.value=" ";
-            var fahrenheit = fahrenheit_.value=" ";
+            var centigrade = centigrade_.value = " ";
+            var fahrenheit = fahrenheit_.value = " ";
         }
     </script>
 </body>

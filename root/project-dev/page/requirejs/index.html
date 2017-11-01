@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>requirejs</title>
+    <link rel="stylesheet" href="../../static/css/lib/mui.min.css">
+</head>
+
+<body>
+
+    <header class="mui-bar mui-bar-nav">
+        <h1 class="mui-title">requirejs</h1>
+    </header>
+    <div class="mui-content">
+        <div class="mui-card">
+            <ul class="mui-table-view mui-table-view-chevron">
+                <li class="mui-table-view-cell">切换（圆角列表）
+                    <div id="M_Toggle" class="mui-switch mui-active">
+                        <div class="mui-switch-handle"></div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#">requirejs</a>
+                    <ul class="mui-table-view mui-table-view-chevron">
+                        <li class="mui-table-view-cell">
+                            <a class="mui-navigate-right" href="page/requirejs">requirejs</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</body>
+
+
+<script src="../../static/script/lib/require.min.js"></script>
+<script>
+    requirejs.config({
+        // 所有脚本的跟目录， 相对于 html
+        baseUrl: '../../static/script/',
+        paths: {
+            // mui 脚本的路径， 相对于 baseUrl
+            'mui': 'lib/mui.min',
+            'log': 'log'
+        },
+        shim: {
+            // 需要导出一个名称为 mui 的全局变量，否则无法使用
+            'mui': {
+                exports: 'mui'
+            },
+            'log': {
+                exports: 'exLog' //exports只会输出某一个方法或变量
+            }
+        }
+    });
+
+    require(['mui', 'log'], function(mui, log) {
+        mui.init({
+            swipeBack: true //启用右滑关闭功能
+        });
+        window.addEventListener('toggle', function(event) {
+            if (event.target.id === 'M_Toggle') {
+                var isActive = event.detail.isActive;
+                var table = document.querySelector('.mui-table-view');
+                var card = document.querySelector('.mui-card');
+                if (isActive) {
+                    card.appendChild(table);
+                    card.style.display = '';
+                } else {
+                    var content = document.querySelector('.mui-content');
+                    content.insertBefore(table, card);
+                    card.style.display = 'none';
+                }
+            }
+        });
+        console.log(log);
+    });
+
+    // http://beginor.github.io/2014/11/17/load-angularjs-with-requirejs.html
+    // http://requirejs.org/docs/jquery.html#intro
+    // https://segmentfault.com/q/1010000003726783
+
+    //app.js修改如下：
+    //注意：exports只会输出某一个方法或变量
+
+    //app.js
+    /* require.config({
+        baseUrl: "./js",
+        paths:{
+            'jquery': "jquery",
+            'log': 'log'
+        },
+        shim:{
+            'log':{
+                deps: ['jquery'],
+                exports: 'writeLog'
+            }
+        }
+    });
+
+    require(['jquery','log'], function ($,log) {
+        log('测试测试！！！');
+    });
+    */
+</script>
+</body>
+
+</html>

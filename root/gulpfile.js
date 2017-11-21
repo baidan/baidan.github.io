@@ -56,7 +56,7 @@ gulp.task('server:dev', function() {
             baseDir: dev.basePath,
             index: 'index.html'
         },
-        port: 3000
+        port: 3088
     });
 
     gulp.watch([dev.basePath + '**/*' + "*.html", '!' + dev.basePath + 'static'], ["html:dev"]);
@@ -138,7 +138,7 @@ gulp.task('server:test', function() {
             baseDir: build.basePath,
             index: 'index.html'
         },
-        port: 3001
+        port: 3089
     });
 });
 

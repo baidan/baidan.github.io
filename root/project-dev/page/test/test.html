@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>测试</title>
+    <link rel="stylesheet" href="../../static/css/lib/mui.min.css">
+</head>
+
+<body>
+
+
+    <script src="../../static/script/lib/mui.min.js"></script>
+    <script src="../../static/script/lib/jquery-1.11.3.min.js"></script>
+    <script>
+        function containsNonLatinCodepoints(s) {
+            return /[^\u4e00-\u9fa5]/.test(s);
+        }
+
+        var str = "𨫎";
+        var str1 = "𨫎";
+        var k = "\uD862\uDECE";
+
+        console.log(containsNonLatinCodepoints(str1));
+
+        var reg = /^(?:[\u3300-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\uFE30-\uFE4F]|[\uD840-\uD868\uD86A-\uD872][\uDC00-\uDFFF]|\uD869[\uDC00-\uDEDF\uDF00-\uDFFF]|\uD873[\uDC00-\uDEAF]|\uD87E[\uDC00-\uDE1F])+$/m
+
+        function isChineseReg(str) {
+            return reg.test(str);
+        }
+        console.log(isChineseReg(str));
+
+        //所有汉字转Unicode
+        function toUnicode(s) {
+            return s.replace(/[\u3300-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\uFE30-\uFE4F]|[\uD840-\uD868\uD86A-\uD872][\uDC00-\uDFFF]|\uD869[\uDC00-\uDEDF\uDF00-\uDFFF]|\uD873[\uDC00-\uDEAF]|\uD87E[\uDC00-\uDE1F]/g, function(matched) {
+                return '\\u' + matched.charCodeAt(0).toString(16);
+            });
+        }
+        console.log(toUnicode(str));
+
+
+        //所有字符转Unicode
+        function enunicode(code) {
+            code = code.replace(/[\u00FF-\uFFFF]/g, function(matched) {
+                return '\\u' + matched.charCodeAt(0).toString(16);
+            });
+            return code;
+        };
+    </script>
+</body>
+
+</html>

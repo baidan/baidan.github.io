@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <title>测试</title>
+</head>
+
+<body>
+    <iframe name='rightMain' id='rightMain' src='1.pdf' frameborder='no' scrolling='auto' width='100%' allowtransparency='true'></iframe>
+
+    <script src="../../static/script/lib/jquery-1.11.3.min.js"></script>
+    <script>
+        var width = document.documentElement.clientWidth;
+        var height = document.documentElement.clientHeight;
+        $("#rightMain").css({
+            "height":height
+        })
+    </script>
+</body>
+
+</html>

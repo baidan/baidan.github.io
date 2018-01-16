@@ -7,7 +7,6 @@
     />
     <title>vue test</title>
     <link rel="stylesheet" href="../../static/css/lib/mui.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 
 <body>
@@ -112,6 +111,21 @@
                         <todo-items></todo-items>
                     </div>
                 </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <div id="app-9">
+                        <p>{{ message }}</p>
+                        <input v-model="message" />
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <div id="watch-example">
+                        <p>
+                            问一个是/否(yes/no)的问题:
+                            <input v-model="question">
+                        </p>
+                        <p>{{ answer }}</p>
+                    </div>
+                </li>
 
             </ul>
         </div>
@@ -121,7 +135,50 @@
 
 
 <script src="../../static/script/lib/mui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 <script>
+    var watchExampleVM = new Vue({
+        el: '#watch-example',
+        data: {
+            question: '',
+            answer: '在你提出问题之前我不能给你答复!'
+        },
+        watch: {
+            // 如果 `question` 发生改变，这个函数就会运行
+            question: function (newQuestion, oldQuestion) {
+                this.answer = '等待你停止打字...'
+                this.getAnswer()
+            }
+        },
+        methods: {
+            // `_.debounce` 是一个通过 Lodash 限制操作频率的函数。
+            // 在这个例子中，我们希望限制访问 yesno.wtf/api 的频率
+            // AJAX 请求直到用户输入完毕才会发出。想要了解更多关于
+            // `_.debounce` 函数 (及其近亲 `_.throttle`) 的知识，
+            // 请参考：https://lodash.com/docs#debounce
+            getAnswer: _.debounce(
+                function () {
+                    if (this.question.indexOf('?') === -1) {
+                        this.answer = '问题通常包含一个问号(?). ;-)'
+                        return
+                    }
+                    this.answer = 'Thinking...'
+                    var vm = this
+                    axios.get('https://yesno.wtf/api')
+                        .then(function (response) {
+                            vm.answer = _.capitalize(response.data.answer)
+                        })
+                        .catch(function (error) {
+                            vm.answer = 'Error! Could not reach the API. ' + error
+                        })
+                },
+                // 这是我们为判定用户停止输入等待的毫秒数
+                500
+            )
+        }
+    })
 
     Vue.component('todo-items', {
         template: '<li>这是个待办项</li>'
@@ -131,6 +188,67 @@
     Vue.component('todo-item', {
         props: ['todo'],
         template: '<li>{{ todo.text }}sadf</li>'
+    })
+
+    var app9 = new Vue({
+        el: '#app-9',
+        data: {
+            message: "闰土少年"
+        },
+        beforeCreate: function () {
+            console.group('beforeCreate 创建前状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el); //undefined
+            console.log("%c%s", "color:red", "data   : " + this.$data); //undefined
+            console.log("%c%s", "color:red", "message: " + this.message)
+        },
+        created: function () {
+            console.group('created 创建完毕状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el); //undefined
+            console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化
+            console.log("%c%s", "color:red", "message: " + this.message); //已被初始化
+        },
+        beforeMount: function () {
+            console.group('beforeMount 挂载前状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + (this.$el)); //已被初始化
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化
+            console.log("%c%s", "color:red", "message: " + this.message); //已被初始化
+        },
+        mounted: function () {
+            console.group('mounted 挂载结束状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el); //已被初始化
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化
+            console.log("%c%s", "color:red", "message: " + this.message); //已被初始化
+        },
+        beforeUpdate: function () {
+            console.group('beforeUpdate 更新前状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el);
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data);
+            console.log("%c%s", "color:red", "message: " + this.message);
+        },
+        updated: function () {
+            console.group('updated 更新完成状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el);
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data);
+            console.log("%c%s", "color:red", "message: " + this.message);
+        },
+        beforeDestroy: function () {
+            console.group('beforeDestroy 销毁前状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el);
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data);
+            console.log("%c%s", "color:red", "message: " + this.message);
+        },
+        destroyed: function () {
+            console.group('destroyed 销毁完成状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el);
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data);
+            console.log("%c%s", "color:red", "message: " + this.message)
+        }
     })
 
     var app7 = new Vue({

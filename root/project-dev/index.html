@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
     <title>单页索引</title>
     <link rel="stylesheet" href="static/css/lib/mui.min.css">
 </head>
@@ -21,38 +22,51 @@
                         <div class="mui-switch-handle"></div>
                     </div>
                 </li>
-                <li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#">个人简历</a>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">个人简历</a>
                     <ul class="mui-table-view mui-table-view-chevron">
                         <li class="mui-table-view-cell">
                             <a class="mui-navigate-right" href="page/resume">个人简历</a>
                         </li>
                     </ul>
                 </li>
-                <li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#">requirejs</a>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">requirejs</a>
                     <ul class="mui-table-view mui-table-view-chevron">
                         <li class="mui-table-view-cell">
                             <a class="mui-navigate-right" href="page/requirejs">requirejs</a>
                         </li>
                     </ul>
                 </li>
-                <li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#">各厂商Demo</a>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">各厂商Demo</a>
                     <ul class="mui-table-view mui-table-view-chevron">
                         <li class="mui-table-view-cell">
                             <a class="mui-navigate-right" href="page/quan/">京东1111券</a>
                         </li>
                     </ul>
                 </li>
-                <li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#">测试</a>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">测试</a>
                     <ul class="mui-table-view mui-table-view-chevron">
                         <li class="mui-table-view-cell">
                             <a class="mui-navigate-right" href="page/test/test.html">测试</a>
                         </li>
                     </ul>
                 </li>
-                <li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#">vue测试</a>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">vue测试</a>
                     <ul class="mui-table-view mui-table-view-chevron">
                         <li class="mui-table-view-cell">
                             <a class="mui-navigate-right" href="page/test/vue.html">vue测试测试</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">课程</a>
+                    <ul class="mui-table-view mui-table-view-chevron">
+                        <li class="mui-table-view-cell">
+                            <a class="mui-navigate-right" href="page/test/course.html">课程</a>
                         </li>
                     </ul>
                 </li>
@@ -69,7 +83,7 @@
     mui.init({
         swipeBack: true //启用右滑关闭功能
     });
-    window.addEventListener('toggle', function(event) {
+    window.addEventListener('toggle', function (event) {
         if (event.target.id === 'M_Toggle') {
             var isActive = event.detail.isActive;
             var table = document.querySelector('.mui-table-view');

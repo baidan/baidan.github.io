@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="renderer" content="webkit">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>weiduan</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            margin: 0 auto;
+        }
+
+        .logo {
+            position: absolute;
+            left: -1000px;
+            top: -1000px;
+        }
+
+        .share {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            z-index: 2;
+        }
+
+        .share img {
+            position: absolute;
+        }
+
+        .share .sharepng {
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+        }
+
+        .game {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="game" class="game"></div>
+
+    <script src="../../static/script/lib/phaser.min.2.6.2.js"></script>
+    <script type="text/javascript">
+        var GAME = "weiduan";
+    </script>
+    <script>
+        var TITLE = "【爆笑】你好，你是程序猿吗？";
+        var LOGO = "../../../static/images/wei/logo.jpg";
+        var PERSONS = [
+            "weiduan_1_me",
+            "weiduan_1_me_2",
+            "weiduan_1_1"
+        ];
+        var GSENS = [{
+            name: 'weiduan_1_1',
+            str: '你好，你是程序猿吗？',
+            me: false,
+            time: 1
+        }, {
+            name: 'weiduan_1_me',
+            str: '你好，是的，请问你有 什么需求？',
+            me: true,
+            time: 1
+        }, {
+            name: 'weiduan_1_1',
+            str: '我们公司想做个App，要 高端大气上档次，我们的 预算比较高，1000左右',
+            me: false,
+            time: 1
+        }, {
+            name: 'weiduan_1_me',
+            str: '你刚才问什么？',
+            me: true,
+            time: 1
+        }, {
+            name: 'weiduan_1_1',
+            str: '我们公司想做个App，要 高端大气上档次，预算 1000左右',
+            me: false,
+            time: 1
+        }, {
+            name: 'weiduan_1_me',
+            str: '不是这句，是前面一句',
+            me: true,
+            time: 1
+        }, {
+            name: 'weiduan_1_1',
+            str: '你好，你是程序猿吗？',
+            me: false,
+            time: 1
+        }, {
+            name: 'weiduan_1_me_2',
+            str: '不是',
+            me: true,
+            time: 1
+        }, {
+            name: 'weiduan_1_1',
+            str: '。。。',
+            me: false,
+            time: 1
+        }];
+    </script>
+    <script>
+        var game = new Phaser.Game(240, 400, Phaser.CANVAS, 'game');
+
+        game.States = {};
+
+        game.States.boot = function () {
+            this.preload = function () {
+                if (typeof (GAME) !== "undefined") {
+                    this.load.baseURL = GAME + "/";
+                }
+                if (!game.device.desktop) {
+                    this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+                    this.scale.forcePortrait = true;
+                    this.scale.refresh();
+                }
+                game.load.image('loading', '../../../static/images/wei/preloader.gif');
+            };
+            this.create = function () {
+                game.state.start('preload');
+            };
+        };
+
+        game.States.preload = function () {
+            this.preload = function () {
+                var preloadSprite = game.add.sprite(10, game.height / 2, 'loading');
+                game.load.setPreloadSprite(preloadSprite);
+                game.load.image('whitejian', '../../../static/images/wei/whitejian.png');
+                game.load.image('greenjian', '../../../static/images/wei/greenjian.png');
+                for (var i = 0; i < PERSONS.length; i++) {
+                    game.load.image(PERSONS[i], '../../../static/images/wei/' + PERSONS[i] + '.jpg');
+                }
+                //game.load.audio('laugh', '../../../static/images/wei/laugh.mp3');
+                //game.load.audio('message', '../../../static/images/wei/message.mp3');
+            };
+            this.create = function () {
+                game.state.start('main');
+            };
+        };
+
+        game.States.main = function () {
+            this.create = function () {
+                // 背景
+                game.stage.backgroundColor = '#EBEBEB';
+                // 文字样式
+                this.textStyle = {
+                    font: "14px Arial",
+                    fill: '#000000',
+                    wordWrap: true,
+                    wordWrapWidth: game.width - 80
+                };
+                this.myStyle = {
+                    font: "14px Arial",
+                    fill: '#ff0000',
+                    wordWrap: true,
+                    wordWrapWidth: game.width - 80
+                };
+                // 间隙
+                this.ellipse = 30;
+                // 数组
+                this.words = [];
+                //this.message = game.add.audio('message', 1, false);
+                //this.laugh = game.add.audio('laugh', 0.5, false);
+                var count = -1;
+                var $this = this;
+                var ran = function () {
+                    if (count < 0) {
+                        var ranTime = 1;
+                    } else {
+                        var ranTime = GSENS[count].time;
+                    }
+                    game.time.events.add(Phaser.Timer.SECOND * ranTime, function () {
+                        count++;
+                        if (count >= GSENS.length) {
+                            //$this.laugh.play();
+                            document.getElementById('share').style.display = 'block';
+                            return;
+                        }
+                        $this.say(GSENS[count].name, GSENS[count].str, GSENS[count].me);
+                        if (count == 0) {
+                            //$this.message.play();
+                        }
+                        ran();
+                    }, this);
+                }
+                ran();
+            };
+            this.say = function (head, text, me) {
+                // 虚拟一个text来计算宽高
+                var tmp = game.add.text(0, 0, text, this.textStyle);
+                tmp.lineSpacing = -3;
+                var width = tmp.width;
+                var height = tmp.height;
+                tmp.kill();
+                // 都上移一个高度
+                for (var i = 0; i < this.words.length; i++) {
+                    var newpos = this.words[i].pos - height - this.ellipse;
+                    if (newpos < 0 - this.words[i].height) {
+                        this.words[i].sprite.kill();
+                        this.words.splice(0, 1);
+                        i--;
+                    } else {
+                        game.add.tween(this.words[i].sprite).to({
+                            y: newpos
+                        }, 100, Phaser.Easing.Linear.None, true);
+                        this.words[i].pos = newpos;
+                    }
+                }
+                // 创建一个sprite
+                if (me) {
+                    var sprite = game.add.sprite(game.width - 40, game.height, head);
+                } else {
+                    var sprite = game.add.sprite(10, game.height, head);
+                }
+                // 背景
+                var rounded = game.make.graphics(0, 0);
+                if (me) {
+                    rounded.beginFill(0xa0e75a);
+                    rounded.drawRoundedRect(-width - 29, 0, width + 17, height + 7, 4);
+                } else {
+                    rounded.beginFill(0xffffff);
+                    rounded.drawRoundedRect(42, 0, width + 17, height + 7, 4);
+                }
+                rounded.endFill();
+                sprite.addChild(rounded);
+                // 尖尖
+                if (me) {
+                    var jian = game.make.sprite(-12, 10, 'greenjian');
+                } else {
+                    var jian = game.make.sprite(37, 10, 'whitejian');
+                }
+                sprite.addChild(jian);
+                // 文本
+                if (me) {
+                    var txt = game.make.text(-width - 19, 7, text, this.textStyle);
+                } else {
+                    var txt = game.make.text(52, 7, text, this.textStyle);
+                }
+                txt.lineSpacing = -3;
+                sprite.addChild(txt);
+                game.add.tween(sprite).to({
+                    y: game.height - height - this.ellipse
+                }, 100, Phaser.Easing.Linear.None, true);
+                this.words.push({
+                    sprite: sprite,
+                    height: height,
+                    pos: game.height - height - this.ellipse
+                });
+            };
+        };
+
+        game.state.add('boot', game.States.boot);
+        game.state.add('preload', game.States.preload);
+        game.state.add('main', game.States.main);
+
+        game.state.start('boot');
+
+        if (TITLE) {
+            document.title = TITLE;
+        }
+    </script>
+</body>

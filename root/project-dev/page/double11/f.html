@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            display: none;
+        }
+
+        .shareimg {
+            position: absolute;
+            width: 0;
+            height: 0;
+            line-height: 0;
+            font-size: 0;
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="../../static/script/lib/phaser.min.js"></script>
+    <script>
+        var game = new Phaser.Game("100", "100", Phaser.AUTO, "", {
+            preload: preload,
+            create: create,
+            update: update
+        });
+
+        var image_data = [
+            ["light04", "../../static/images/double11/animation/background.jpg"], //背景
+            ["universe", "../../static/images/double11/animation/universe.png"], //宇宙
+            ["headline", "../../static/images/double11/animation/headline_1110.png"], //推荐有奖标题
+            ["vessel", "../../static/images/double11/animation/cooking_vessel.png"], //鼎
+            ["airship", "../../static/images/double11/animation/airship.png"], //船
+            ["galaxy", "../../static/images/double11/animation/galaxy.png"], //银河系
+            ["seven", "../../static/images/double11/animation/seven_billion.png"], //70亿
+            ["globe", "../../static/images/double11/animation/globe.png"], //地球
+            ["light03", "../../static/images/double11/animation/light_03.png"],
+            ["six", "../../static/images/double11/animation/six_billion.png"], //60亿
+            ["cow", "../../static/images/double11/animation/cow.png"], //牛
+            ["light02", "../../static/images/double11/animation/light_02.png"],
+            ["five", "../../static/images/double11/animation/five_billion.png"], //50亿
+            ["eleven", "../../static/images/double11/animation/double_eleven.png"], //双十一
+            /*["light01", "../../static/images/double11/animation/light_01.png"],*/
+            ["lions", "../../static/images/double11/animation/stone_lions.png"], //狮子
+            ["logo", "../../static/images/double11/animation/logo_stone.png"] //logo
+        ];
+
+        var speed = [5.2, 2.6, 4.8, 6, 6, 5.2, 7.6, 7.6, 6.6, 7.6, 7.6, 8.6, 8, 8, 8, 9],
+            image_object = [],
+            imagenum = image_data.length,
+            distance = [500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500],
+            xx = [0, 0, 0, -100, 100, -100, 0, -100, 40, 0, 0, -360, -100, 100, 0, 0],
+            yy = [40, 0, 0, 100, -100, -160, 0, 100, -60, 60, 120, 240, -100, 100, 100, 0],
+            zz = [-1000, -160, -1100, -1100, -980, -860, -1200, -960, -860, -660, -460, -360, -300, -200, -20, 200],
+            scales = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+            rotation = [
+                [0, 0],
+                [0, 0.03],
+                [0, 0],
+                [-1, 0.005],
+                [0, 0],
+                [0, -0.002],
+                [1.5, -0.006],
+                [0, 0.04],
+                [1, 0],
+                [0, -0.002],
+                [0, -0.002],
+                [0, -0.002],
+                [0, -0.005],
+                [0, -0.007],
+                [0, -0.007],
+                [0, -0.007]
+            ];
+        disabled = [],
+            end_point = [340, 560, 320, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500];
+
+        function preload() {
+            var percentage = game.add.text(game.world.width / 2, game.world.height / 2, "", {
+                font: "48px Arial",
+                fill: "#fff",
+                align: "center"
+            });
+            percentage.anchor.set(.5, .5);
+            game.load.onFileComplete.add(function (progress) {
+                percentage.text = "加载中..." + progress + '%';
+            }, game);
+            game.load.onLoadComplete.add(function () {
+                percentage.destroy();
+            }, game);
+            for (var i = 0; i < imagenum; i++) {
+                game.load.image(image_data[i][0], image_data[i][1]);
+            }
+        }
+
+        function create() {
+            var sprites = game.add.spriteBatch();
+
+            for (var i = 0; i < imagenum; i++) {
+                var star = game.make.sprite(0, 0, image_data[i][0]);
+                star.anchor.set(0.5);
+
+                sprites.addChild(star);
+                star.rotation = rotation[i][0];
+
+                image_object.push(star);
+            }
+
+            //下个页面图片预加载
+            var arr = ['bg.png', 'bg_foot.png', 'bg_share.png', 'bg2.png', 'bg3.png', 'close.png', 'cloud.png',
+                'cloud2.png', 'mo.png', 'mo2.png', 'plane.png', 'redbao.png', 'share.png', 'share_arrows.png',
+                'title.png', 'title2.png', 'title3.png', 'reg/title.png', 'reg/bg2.png', 'reg/icon_imgcode.png',
+                'reg/icon_mobile.png', 'reg/icon_phonecode.png'
+            ];
+            for (var i = 0, l = arr.length; i < l; i++) {
+                var objImg = new Image();
+                objImg.src = '../../static/images/double11/' + arr[i];
+            }
+        }
+
+        function update() {
+            for (var i = 0; i < image_object.length; i++) {
+                if (image_object[i] && disabled.indexOf(image_object[i]) < 0) {
+                    image_object[i].perspective = distance[i] / (distance[i] - zz[i]);
+                    image_object[i].x = game.world.centerX + xx[i] * image_object[i].perspective;
+                    image_object[i].y = game.world.centerY + yy[i] * image_object[i].perspective;
+
+                    zz[i] += speed[i];
+
+                    if (zz[i] > end_point[i]) {
+                        disabled.push(image_object[i]);
+                        if (i != 0 && i != 2) {
+                            image_object[i].destroy();
+                        } else {
+                            if (i == 2) {
+                                setTimeout(function () {
+                                    //location.href = "d.html";
+                                }, 1600);
+                            }
+                        }
+                        continue;
+                    }
+
+                    image_object[i].alpha = Math.min(image_object[i].perspective / 2, 1);
+                    if (scales[i] != 1) {
+                        image_object[i].scale.set(image_object[i].perspective / 2);
+                    }
+                    image_object[i].rotation += rotation[i][1];
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <img src="../../static/images/double11/share.jpg" alt="中均资本" class="shareimg">
+    <script src="../../static/script/up_beacon.js?dev"></script>
+</body>
+
+</html>

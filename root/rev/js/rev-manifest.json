@@ -1,4 +1,7 @@
 {
+  "apporh5.min.js": "apporh5.min.js?v=abbf60c8d4",
+  "double.min.js": "double.min.js?v=4784ff4baf",
   "log.min.js": "log.min.js?v=189d88b60a",
-  "resume.min.js": "resume.min.js?v=8b98255160"
+  "resume.min.js": "resume.min.js?v=8b98255160",
+  "up_beacon.min.js": "up_beacon.min.js?v=8c8614d324"
 }

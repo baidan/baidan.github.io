@@ -56,7 +56,10 @@ var dev = {
 gulp.task('server:dev', function () {
     connect.server({
         root: dev.basePath,
-        livereload: true,
+        livereload: {
+            port:'35729'
+        },
+        host:'172.16.6.246', 
         port: 3000,
         middleware: function (connect, opt) {
             return [
@@ -65,7 +68,7 @@ gulp.task('server:dev', function () {
                     changeOrigin:true
                 })
             ]
-        }
+        } 
     });
 
     gulp.watch([dev.basePath + '**/*' + "*.html", '!' + dev.basePath + 'static'], ["html:dev"]);

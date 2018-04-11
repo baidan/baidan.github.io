@@ -67,13 +67,13 @@
                 <li class="mui-table-view-cell mui-collapse">
                     <div id="app-5">
                         <p>{{ message }}</p>
-                        <button v-on:click="reverseMessage">逆转消息</button>
+                        <button @click="reverseMessage">逆转消息</button>
                     </div>
                 </li>
                 <li class="mui-table-view-cell mui-collapse">
                     <div id="app-6">
-                        <p>{{ message }}</p>
-                        <input v-model="message">
+                        <p>{{ monthlyIncomeInpNum }}</p>
+                        <input v-model="monthlyIncomeInpNum">
                     </div>
                 </li>
                 <li class="mui-table-view-cell mui-collapse">
@@ -254,10 +254,18 @@
     var app7 = new Vue({
         el: '#app-7',
         data: {
-            groceryList: [
-                { id: 0, text: '蔬菜' },
-                { id: 1, text: '奶酪' },
-                { id: 2, text: '随便其它什么人吃的东西' }
+            groceryList: [{
+                    id: 0,
+                    text: '蔬菜'
+                },
+                {
+                    id: 1,
+                    text: '奶酪'
+                },
+                {
+                    id: 2,
+                    text: '随便其它什么人吃的东西'
+                }
             ]
         }
     })
@@ -275,10 +283,18 @@
     var app8 = new Vue({
         el: '#app-8',
         data: {
-            inputsList: [
-                { id: 0, text: '蔬菜' },
-                { id: 1, text: '奶酪' },
-                { id: 2, text: '随便其它什么人吃的东西' }
+            inputsList: [{
+                    id: 0,
+                    text: '蔬菜'
+                },
+                {
+                    id: 1,
+                    text: '奶酪'
+                },
+                {
+                    id: 2,
+                    text: '随便其它什么人吃的东西'
+                }
             ]
         }
     })
@@ -297,7 +313,27 @@
     var app6 = new Vue({
         el: '#app-6',
         data: {
-            message: '撒地方'
+            message: 'asfdasdfsadffffff',
+            map: {
+                monthlyIncome: "asdfsdfsdfasdf"
+            }
+        },
+        methods: {
+            inputCheck(name, value) {
+                console.log('sdaaaaaaaaaaaaaaaaaaaaa')
+                this.message = value.replace(/\D/g, '');
+            }
+        },
+        computed: {
+            monthlyIncomeInpNum: {
+                get: function () {
+                    return this.map.monthlyIncome;
+                },
+                set: function (newValue) {
+                    console.log('ddd');
+                    this.map.monthlyIncome = newValue.replace(/\D/g, "");
+                }
+            }
         }
     })
     var app2 = new Vue({
@@ -318,31 +354,33 @@
                 this.message = this.msg.split('').reverse().join('')
             }
         }
+
     })
 
     var app4 = new Vue({
         el: '#app-4',
         data: {
-            todos: [
-                {
+            todos: [{
                     title: '第一个连烈',
                     text: [{
-                        text: 'sdfsadf'
-                    },
-                    {
-                        text: 'sadfsdf'
-                    }, {
-                        text: 'sadfsdf'
-                    }]
+                            text: 'sdfsadf'
+                        },
+                        {
+                            text: 'sadfsdf'
+                        }, {
+                            text: 'sadfsdf'
+                        }
+                    ]
                 },
                 {
                     title: '第二个连烈',
                     text: [{
-                        text: 'safsadf55444'
-                    },
-                    {
-                        text: 'sadfsadf'
-                    }]
+                            text: 'safsadf55444'
+                        },
+                        {
+                            text: 'sadfsadf'
+                        }
+                    ]
                 }
             ]
         }

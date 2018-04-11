@@ -1,0 +1,203 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Highcharts </title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <script src="../../static/script/lib/flexible.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+<style>
+    .typeConfig-wrap {
+        width: 7rem;
+    }
+
+    .typeConfig-wrap-color {
+        width: 0.2rem;
+        height: 0.2rem;
+        border-radius: 0.2rem;
+        display: inline-block;
+    }
+
+    .typeConfig-wrap-item {
+        width: 25%;
+        text-align: center;
+        float: left;
+    }
+
+    .typeConfig-wrap-text {
+        font-family: PingFangSC-Regular;
+        font-size: 0.3rem;
+        color: #999999;
+        letter-spacing: -0.46px;
+    }
+
+    .typeConfig-wrap-item-num {
+        font-family: SFProText-Regular;
+        font-size: 0.60rem;
+        color: #666666;
+        letter-spacing: -0.81px;
+        padding: 0;
+        margin: 0;
+    }
+</style>
+
+<body>
+    <div id="container" style="width:7rem; height: 7rem; margin: 0 auto"></div>
+    <div class="typeConfig-wrap">
+        <!--  <div class="typeConfig-wrap-item">
+            <p class="typeConfig-wrap-item-num">35%</p>
+            <p>
+                <b class="typeConfig-wrap-color" style="background-color:red"></b>
+                <span class="typeConfig-wrap-text">股票型</span>
+            </p>
+        </div>
+-->
+    </div>
+
+    <script language="JavaScript">
+        $(document).ready(function () {
+            var chart = {
+                plotBackgroundColor: null, //图片区域背景
+                plotBorderWidth: 0, // 图片区域边框
+                plotShadow: false //图片区域阴影
+            };
+            var title = { //文字设置
+                text: '配比说明',
+                align: 'center',
+                verticalAlign: 'middle',
+                y: 5,
+                style: {
+                    color: '#666666',
+                    fontSize: '1.8em'
+                }
+            };
+            var tooltip = { //提示显示
+                shared: !0,
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            };
+            var plotOptions = { //绘制选项
+                pie: {
+                    allowPointSelect: !1,
+                    cursor: 'pointer',
+                    dataLabels: { //数据显示
+                        format: "<b>{point.name}</b>",
+                        enabled: !1,
+                        distance: -40,
+                        style: {
+                            color: '#000000',
+                            fontSize: '16px'
+                        }
+                    },
+                    point: {
+                        events: {
+                            legendItemClick: function (e) { //阻止legend点击事件
+                                e.preventDefault()
+                            }
+                        }
+                    },
+                    showInLegend: !1,
+                    startAngle: -90, //开始角度
+                    endAngle: 270, //结束角度  相加等于360
+
+                    center: ['50%', '50%']
+                }
+            };
+            var series = [{ //图表类型配置
+                type: 'pie',
+                name: '配置比例',
+                innerSize: '40%',
+                data: [
+                    ['股票型', 35],
+                    ['混合型', 15],
+                    ['债券型', 25],
+                    ['货币型', 25]
+                ]
+            }];
+
+            var colors = [ //颜色设置
+                '#FF6E72',
+                '#9692FF',
+                '#16C2AF',
+                '#FFC751'
+            ];
+
+            //自定义html标签
+            var labels = {
+                items: [{
+                    html: function () {
+                        /* var g_series = series[0]['data'];
+                        for (var i = 0; i < g_series.length; i++) {
+                            g_series[i].push(colors[i])
+                        }
+                        console.log(g_series);
+                        var str = '<span></span>';
+
+                        return str; */
+
+                    }(),
+                    style: {
+                        left: '0',
+                        top: '420px'
+                    }
+                }],
+                style: { //设置标签颜色
+                    color: 'rgb(0,0,255)'
+                }
+            };
+
+
+            var legend = {
+                layout: "vertical",
+                align: "center",
+                verticalAlign: "bottom",
+                borderWidth: 1,
+                itemMarginBottom: 0,
+                itemWidth: '15',
+                squareSymbol: !0,
+                useHTML: !0,
+                labelFormatter: function () {
+                    console.log(this)
+                    return '<span style="padding:0;margin:0;font-family: PingFangSC-Regular;font-size: 12px;color: #999999;letter-spacing: -0.46px;">' +
+                        this.name + '</span><p style="color:' + this.color +
+                        ';padding:0;margin:0;font-family: SFProText-Regular;font-size: 12px;color: #666666;letter-spacing: -0.81px;">' +
+                        this.percentage +
+                        '%</p>'
+                },
+                itemStyle: {
+                    cursor: "pointer"
+                }
+            };
+            var credits = { //版权信息
+                enabled: !1
+            };
+
+            var json = {};
+            json.chart = chart;
+            json.title = title;
+            json.tooltip = tooltip;
+            json.series = series;
+            json.plotOptions = plotOptions;
+            json.colors = colors;
+            json.plotOptions = plotOptions;
+            json.credits = credits;
+            json.labels = labels;
+            $('#container').highcharts(json);
+            var g_series = series[0]['data'];
+            for (var i = 0; i < g_series.length; i++) {
+                g_series[i].push(colors[i])
+            }
+            console.log(g_series);
+            for (var i = 0; i < g_series.length; i++) {
+                var str1 = '<div class="typeConfig-wrap-item"><p class="typeConfig-wrap-item-num">' + g_series[
+                        i][1] +'%</p><p><b class="typeConfig-wrap-color" style="background-color:' + g_series[i]
+                    [2] + '"></b><span class="typeConfig-wrap-text">' + g_series[i][0] + '</span></p></div>';
+                $('.typeConfig-wrap').append(str1);
+            }
+        });
+    </script>
+</body>
+
+</html>

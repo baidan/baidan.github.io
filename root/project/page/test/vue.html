@@ -1,1 +1,272 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="maximum-scale=1,minimum-scale=1,user-scalable=0,width=device-width,initial-scale=1"><title>vue test</title><link rel="stylesheet" href="../../static/css/lib/mui.min.css"></head><body><header class="mui-bar mui-bar-nav"><h1 class="mui-title">vue</h1></header><div class="mui-content"><div class="mui-card"><ul class="mui-table-view mui-table-view-chevron"><li class="mui-table-view-cell mui-collapse"><div id="app">{{ message }}</div></li><li class="mui-table-view-cell mui-collapse"><div id="app-2"><span v-bind:title="message">鼠标悬停几秒钟查看此处动态绑定的提示信息！</span></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-3"><p v-show="seen">现在你看到我了</p><p v-if="seen" v-bind:data-attr="seen">现在你看到我了</p><input v-model="seen" v-bind:data-attr="seen"></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-4"><div id="list" v-for="item in todos"><span class="title">{{ item.title }}</span><ol><li v-for="itemList in item.text">{{itemList.text}}</li></ol></div><div id="list" v-for="item in todos"><span class="title"><input v-model="item.title"></span><ol><li v-for="itemList in item.text"><input v-model="itemList.text"></li></ol></div></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-5"><p>{{ message }}</p><button v-on:click="reverseMessage">逆转消息</button></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-6"><p>{{ message }}</p><input v-model="message"></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-7"><ol><todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item></ol></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-8"><ol><forms v-bind:inputs="inputsList[1]"></forms><div><input v-model="inputsList[1].text"></div></ol><todo-items></todo-items></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-9"><p>{{ message }}</p><input v-model="message"></div></li><li class="mui-table-view-cell mui-collapse"><div id="watch-example"><p>问一个是/否(yes/no)的问题: <input v-model="question"></p><p>{{ answer }}</p></div></li></ul></div></div></body><script src="../../static/script/lib/mui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vue"></script><script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script><script>var watchExampleVM=new Vue({el:"#watch-example",data:{question:"",answer:"在你提出问题之前我不能给你答复!"},watch:{question:function(e,o){this.answer="等待你停止打字...",this.getAnswer()}},methods:{getAnswer:_.debounce(function(){if(-1!==this.question.indexOf("?")){this.answer="Thinking...";var e=this;axios.get("https://yesno.wtf/api").then(function(o){e.answer=_.capitalize(o.data.answer)}).catch(function(o){e.answer="Error! Could not reach the API. "+o})}else this.answer="问题通常包含一个问号(?). ;-)"},500)}});Vue.component("todo-items",{template:"<li>这是个待办项</li>"}),Vue.component("todo-item",{props:["todo"],template:"<li>{{ todo.text }}sadf</li>"});var app9=new Vue({el:"#app-9",data:{message:"闰土少年"},beforeCreate:function(){console.group("beforeCreate 创建前状态 >>>>>>>>>>"),console.log("%c%s","color:red","el     : "+this.$el),console.log("%c%s","color:red","data   : "+this.$data),console.log("%c%s","color:red","message: "+this.message)},created:function(){console.group("created 创建完毕状态 >>>>>>>>>>"),console.log("%c%s","color:red","el     : "+this.$el),console.log("%c%s","color:red","data   : "+this.$data),console.log("%c%s","color:red","message: "+this.message)},beforeMount:function(){console.group("beforeMount 挂载前状态 >>>>>>>>>>"),console.log("%c%s","color:red","el     : "+this.$el),console.log(this.$el),console.log("%c%s","color:red","data   : "+this.$data),console.log("%c%s","color:red","message: "+this.message)},mounted:function(){console.group("mounted 挂载结束状态 >>>>>>>>>>"),console.log("%c%s","color:red","el     : "+this.$el),console.log(this.$el),console.log("%c%s","color:red","data   : "+this.$data),console.log("%c%s","color:red","message: "+this.message)},beforeUpdate:function(){console.group("beforeUpdate 更新前状态 >>>>>>>>>>"),console.log("%c%s","color:red","el     : "+this.$el),console.log(this.$el),console.log("%c%s","color:red","data   : "+this.$data),console.log("%c%s","color:red","message: "+this.message)},updated:function(){console.group("updated 更新完成状态 >>>>>>>>>>"),console.log("%c%s","color:red","el     : "+this.$el),console.log(this.$el),console.log("%c%s","color:red","data   : "+this.$data),console.log("%c%s","color:red","message: "+this.message)},beforeDestroy:function(){console.group("beforeDestroy 销毁前状态 >>>>>>>>>>"),console.log("%c%s","color:red","el     : "+this.$el),console.log(this.$el),console.log("%c%s","color:red","data   : "+this.$data),console.log("%c%s","color:red","message: "+this.message)},destroyed:function(){console.group("destroyed 销毁完成状态 >>>>>>>>>>"),console.log("%c%s","color:red","el     : "+this.$el),console.log(this.$el),console.log("%c%s","color:red","data   : "+this.$data),console.log("%c%s","color:red","message: "+this.message)}}),app7=new Vue({el:"#app-7",data:{groceryList:[{id:0,text:"蔬菜"},{id:1,text:"奶酪"},{id:2,text:"随便其它什么人吃的东西"}]}});Vue.component("forms",{props:["inputs"],template:"<li>{{ inputs.text }}</li>"});var app8=new Vue({el:"#app-8",data:{inputsList:[{id:0,text:"蔬菜"},{id:1,text:"奶酪"},{id:2,text:"随便其它什么人吃的东西"}]}}),app3=new Vue({el:"#app-3",data:{seen:!0}}),app6=new Vue({el:"#app-6",data:{message:"撒地方"}}),app2=new Vue({el:"#app-2",data:{message:"页面加载于 "+(new Date).toLocaleString()}}),app5=new Vue({el:"#app-5",data:{message:"Hello Vue.js!",msg:"重视的发挥空间"},methods:{reverseMessage:function(){this.message=this.msg.split("").reverse().join("")}}}),app4=new Vue({el:"#app-4",data:{todos:[{title:"第一个连烈",text:[{text:"sdfsadf"},{text:"sadfsdf"},{text:"sadfsdf"}]},{title:"第二个连烈",text:[{text:"safsadf55444"},{text:"sadfsadf"}]}]}}),app=new Vue({el:"#app",data:{message:"阿斯蒂芬"}});mui.init({swipeBack:!0}),window.addEventListener("toggle",function(e){if("M_Toggle"===e.target.id){var o=e.detail.isActive,s=document.querySelector(".mui-table-view"),t=document.querySelector(".mui-card");o?(t.appendChild(s),t.style.display=""):(document.querySelector(".mui-content").insertBefore(s,t),t.style.display="none")}})</script></html>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="maximum-scale=1,minimum-scale=1,user-scalable=0,width=device-width,initial-scale=1"><title>vue test</title><link rel="stylesheet" href="../../static/css/lib/mui.min.css"></head><body><header class="mui-bar mui-bar-nav"><h1 class="mui-title">vue</h1></header><div class="mui-content"><div class="mui-card"><ul class="mui-table-view mui-table-view-chevron"><li class="mui-table-view-cell mui-collapse"><div id="app">{{ message }}</div></li><li class="mui-table-view-cell mui-collapse"><div id="app-2"><span v-bind:title="message">鼠标悬停几秒钟查看此处动态绑定的提示信息！</span></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-3"><p v-show="seen">现在你看到我了</p><p v-if="seen" v-bind:data-attr="seen">现在你看到我了</p><input v-model="seen" v-bind:data-attr="seen"></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-4"><div id="list" v-for="item in todos"><span class="title">{{ item.title }}</span><ol><li v-for="itemList in item.text">{{itemList.text}}</li></ol></div><div id="list" v-for="item in todos"><span class="title"><input v-model="item.title"></span><ol><li v-for="itemList in item.text"><input v-model="itemList.text"></li></ol></div></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-5"><p>{{ message }}</p><button @click="reverseMessage">逆转消息</button></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-6"><p>{{ monthlyIncomeInpNum }}</p><input v-model="monthlyIncomeInpNum"></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-7"><ol><todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item></ol></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-8"><ol><forms v-bind:inputs="inputsList[1]"></forms><div><input v-model="inputsList[1].text"></div></ol><todo-items></todo-items></div></li><li class="mui-table-view-cell mui-collapse"><div id="app-9"><p>{{ message }}</p><input v-model="message"></div></li><li class="mui-table-view-cell mui-collapse"><div id="watch-example"><p>问一个是/否(yes/no)的问题: <input v-model="question"></p><p>{{ answer }}</p></div></li></ul></div></div></body><script src="../../static/script/lib/mui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vue"></script><script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script><script>var watchExampleVM = new Vue({
+        el: '#watch-example',
+        data: {
+            question: '',
+            answer: '在你提出问题之前我不能给你答复!'
+        },
+        watch: {
+            // 如果 `question` 发生改变，这个函数就会运行
+            question: function (newQuestion, oldQuestion) {
+                this.answer = '等待你停止打字...'
+                this.getAnswer()
+            }
+        },
+        methods: {
+            // `_.debounce` 是一个通过 Lodash 限制操作频率的函数。
+            // 在这个例子中，我们希望限制访问 yesno.wtf/api 的频率
+            // AJAX 请求直到用户输入完毕才会发出。想要了解更多关于
+            // `_.debounce` 函数 (及其近亲 `_.throttle`) 的知识，
+            // 请参考：https://lodash.com/docs#debounce
+            getAnswer: _.debounce(
+                function () {
+                    if (this.question.indexOf('?') === -1) {
+                        this.answer = '问题通常包含一个问号(?). ;-)'
+                        return
+                    }
+                    this.answer = 'Thinking...'
+                    var vm = this
+                    axios.get('https://yesno.wtf/api')
+                        .then(function (response) {
+                            vm.answer = _.capitalize(response.data.answer)
+                        })
+                        .catch(function (error) {
+                            vm.answer = 'Error! Could not reach the API. ' + error
+                        })
+                },
+                // 这是我们为判定用户停止输入等待的毫秒数
+                500
+            )
+        }
+    })
+
+    Vue.component('todo-items', {
+        template: '<li>这是个待办项</li>'
+    })
+
+
+    Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li>{{ todo.text }}sadf</li>'
+    })
+
+    var app9 = new Vue({
+        el: '#app-9',
+        data: {
+            message: "闰土少年"
+        },
+        beforeCreate: function () {
+            console.group('beforeCreate 创建前状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el); //undefined
+            console.log("%c%s", "color:red", "data   : " + this.$data); //undefined
+            console.log("%c%s", "color:red", "message: " + this.message)
+        },
+        created: function () {
+            console.group('created 创建完毕状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el); //undefined
+            console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化
+            console.log("%c%s", "color:red", "message: " + this.message); //已被初始化
+        },
+        beforeMount: function () {
+            console.group('beforeMount 挂载前状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + (this.$el)); //已被初始化
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化
+            console.log("%c%s", "color:red", "message: " + this.message); //已被初始化
+        },
+        mounted: function () {
+            console.group('mounted 挂载结束状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el); //已被初始化
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data); //已被初始化
+            console.log("%c%s", "color:red", "message: " + this.message); //已被初始化
+        },
+        beforeUpdate: function () {
+            console.group('beforeUpdate 更新前状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el);
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data);
+            console.log("%c%s", "color:red", "message: " + this.message);
+        },
+        updated: function () {
+            console.group('updated 更新完成状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el);
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data);
+            console.log("%c%s", "color:red", "message: " + this.message);
+        },
+        beforeDestroy: function () {
+            console.group('beforeDestroy 销毁前状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el);
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data);
+            console.log("%c%s", "color:red", "message: " + this.message);
+        },
+        destroyed: function () {
+            console.group('destroyed 销毁完成状态 >>>>>>>>>>');
+            console.log("%c%s", "color:red", "el     : " + this.$el);
+            console.log(this.$el);
+            console.log("%c%s", "color:red", "data   : " + this.$data);
+            console.log("%c%s", "color:red", "message: " + this.message)
+        }
+    })
+
+    var app7 = new Vue({
+        el: '#app-7',
+        data: {
+            groceryList: [{
+                    id: 0,
+                    text: '蔬菜'
+                },
+                {
+                    id: 1,
+                    text: '奶酪'
+                },
+                {
+                    id: 2,
+                    text: '随便其它什么人吃的东西'
+                }
+            ]
+        }
+    })
+
+
+
+    /*
+     <forms v-bind:inputs="inputsList[1]"></forms>
+    */
+    Vue.component('forms', {
+        props: ['inputs'],
+        template: '<li>{{ inputs.text }}</li>'
+    })
+
+    var app8 = new Vue({
+        el: '#app-8',
+        data: {
+            inputsList: [{
+                    id: 0,
+                    text: '蔬菜'
+                },
+                {
+                    id: 1,
+                    text: '奶酪'
+                },
+                {
+                    id: 2,
+                    text: '随便其它什么人吃的东西'
+                }
+            ]
+        }
+    })
+
+
+
+
+    var app3 = new Vue({
+        el: '#app-3',
+        data: {
+            seen: true
+        }
+    })
+
+
+    var app6 = new Vue({
+        el: '#app-6',
+        data: {
+            message: 'asfdasdfsadffffff',
+            map: {
+                monthlyIncome: "asdfsdfsdfasdf"
+            }
+        },
+        methods: {
+            inputCheck(name, value) {
+                console.log('sdaaaaaaaaaaaaaaaaaaaaa')
+                this.message = value.replace(/\D/g, '');
+            }
+        },
+        computed: {
+            monthlyIncomeInpNum: {
+                get: function () {
+                    return this.map.monthlyIncome;
+                },
+                set: function (newValue) {
+                    console.log('ddd');
+                    this.map.monthlyIncome = newValue.replace(/\D/g, "");
+                }
+            }
+        }
+    })
+    var app2 = new Vue({
+        el: '#app-2',
+        data: {
+            message: '页面加载于 ' + new Date().toLocaleString()
+        }
+    })
+
+    var app5 = new Vue({
+        el: '#app-5',
+        data: {
+            message: 'Hello Vue.js!',
+            msg: '重视的发挥空间'
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.msg.split('').reverse().join('')
+            }
+        }
+
+    })
+
+    var app4 = new Vue({
+        el: '#app-4',
+        data: {
+            todos: [{
+                    title: '第一个连烈',
+                    text: [{
+                            text: 'sdfsadf'
+                        },
+                        {
+                            text: 'sadfsdf'
+                        }, {
+                            text: 'sadfsdf'
+                        }
+                    ]
+                },
+                {
+                    title: '第二个连烈',
+                    text: [{
+                            text: 'safsadf55444'
+                        },
+                        {
+                            text: 'sadfsadf'
+                        }
+                    ]
+                }
+            ]
+        }
+    })
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: '阿斯蒂芬'
+        }
+    })
+
+    mui.init({
+        swipeBack: true //启用右滑关闭功能
+    });
+    window.addEventListener('toggle', function (event) {
+        if (event.target.id === 'M_Toggle') {
+            var isActive = event.detail.isActive;
+            var table = document.querySelector('.mui-table-view');
+            var card = document.querySelector('.mui-card');
+            if (isActive) {
+                card.appendChild(table);
+                card.style.display = '';
+            } else {
+                var content = document.querySelector('.mui-content');
+                content.insertBefore(table, card);
+                card.style.display = 'none';
+            }
+        }
+    });</script></html>

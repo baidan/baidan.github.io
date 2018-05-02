@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <title>react test</title>
+    <link href="../../static/css/lib/mui.min.css" rel="stylesheet">
+</head>
+<style>
+    .completed {
+        text-decoration: line-through;
+    }
+</style>
+
+<body>
+
+    <header class="mui-bar mui-bar-nav">
+        <h1 class="mui-title">react test</h1>
+    </header>
+    <div class="mui-content">
+        <div>
+            <input id="input" />
+            <span id="output"></span>
+        </div>
+        <button id="add">添加</button>
+        <div id="list"></div>
+        <div id="list2"></div>
+    </div>
+</body>
+
+<!--
+参考1：https://medium.com/javascript-inside/learn-the-concepts-part-1-418952d968cb
+参考2：https://medium.com/javascript-inside/learning-react-without-using-react-part-2-703621a89432
+源码参考：http://plnkr.co/edit/fjQbQwZpQlhd5wXoc9J8?p=preview
+-->
+
+<script src="../../static/script/lib/mui.min.js"></script>
+<script src="../../static/script/lib/jquery-1.11.3.min.js"></script>
+
+<script>
+    var state = {
+        value: null
+    };
+    var state1 = {
+        items: [],
+        id: 0
+    };
+    !(function (win, $, mui) {
+        var react = {
+            init: function () {
+                var _this = this;
+                this.render();
+                //this.render1();
+                //this.render2(state1, $('#list'));
+                this.initPage();
+
+                var store = react.createStore(state1);
+                window.store = store;
+                store.onUpdate('rootRender', function (state) {
+                    console.log("获取的state===", state);
+                    _this.render2(state, $('#list'));
+                });
+            },
+            initPage: function () {
+                var _this = this;
+                $('#input').on('keyup', function () {
+                    state.value = $(this).val().trim();
+                    _this.render();
+                });
+                //this.bind1();
+                this.bind2();
+            },
+            bind2: function () {
+                $('#add').on('click', function (e) {
+                    var value = $('#input').val().trim();
+                    $('#input').val('');
+                    state1.items.push({
+                        id: state1.id++,
+                        text: value,
+                        completed: false
+                    });
+                    store.setState($.extend({}, state1));
+                });
+
+                $('#list').on('click', '.item', function () {
+                    var toggleId = parseInt($(this).attr('id'));
+                    state1.items.forEach(function (el) {
+                        if (el.id === toggleId) {
+                            el.completed = !el.completed;
+                        }
+                    });
+                    store.setState($.extend({}, state1));
+                });
+            },
+            bind1: function () {
+                $('#add').on('click', function (e) {
+                    var value = $('#input').val().trim();
+                    $('#input').val('');
+                    state1.items.push({
+                        id: state1.id++,
+                        text: value,
+                        completed: false
+                    });
+                    _this.render1();
+                });
+
+                $('#list').on('click', '.item', function () {
+                    var toggleId = parseInt($(this).attr('id'));
+                    state1.items.forEach(function (el) {
+                        if (el.id === toggleId) {
+                            el.completed = !el.completed;
+                        }
+                    });
+                    _this.render1();
+                });
+            },
+            render: function () {
+                $('#output').html(state.value);
+            },
+            render1: function () {
+                var items = state1.items.map(function (item) {
+                    var completed = item.completed ? 'completed' : '';
+                    return '<li class="item + ' + completed + '" id="' + item.id + '">(' + item.id +
+                        ') ' + item.text + '</li>';
+                }).join('');
+                var html = '<ul>' + items + '</ul>';
+                $('#list').html(html);
+            },
+            render2: function (props, node) {
+                //$('#list').html(ItemsList({items : state.items}));
+                //$('#list').html(ItemsList({items : props.items}));
+                node.html(this.ItemsList({
+                    items: props.items
+                }));
+            },
+            h2: function (text) {
+                return '<h2>' + text + '</h2>';
+            },
+            div: function (text) {
+                return '<div>' + text + '</div>';
+            },
+            header: function (text) {
+                this.div(this.h2(text));
+            },
+            ItemRow: function (props) {
+                var className = props.completed ? ' item completed' : 'item';
+                return '<li class="' + className + '">' + props.text + '</li>';
+            },
+            ItemsList: function (props) {
+                return '<ul>' + props.items.map(this.ItemRow).join('') + '</ul>';
+            },
+            createStore: function (initialState) {
+                var _state = initialState || {},
+                    _listeners = [];
+
+                function updateListeners(state) {
+                    _listeners.forEach(function (listener) {
+                        listener.cb(state);
+                    });
+                }
+
+                return {
+                    setState: function (state) {
+                        _state = state;
+                        updateListeners(state);
+                    },
+                    getState: function () {
+                        return _state;
+                    },
+
+                    onUpdate: function (name, cb) {
+                        _listeners.push({
+                            name: name,
+                            cb: cb
+                        });
+                    }
+                };
+            }
+        }
+        react.init();
+    })(this, jQuery, mui)
+</script>
+
+
+</html>

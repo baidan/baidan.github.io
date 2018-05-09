@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <title>react test</title>
+    <link href="../../static/css/lib/mui.min.css" rel="stylesheet">
+</head>
+<style>
+    .completed {
+        text-decoration: line-through;
+    }
+</style>
+
+<body>
+
+    <header class="mui-bar mui-bar-nav">
+        <h1 class="mui-title">obj prototype</h1>
+    </header>
+
+</body>
+
+
+<script src="../../static/script/lib/mui.min.js"></script>
+<script src="../../static/script/lib/jquery-1.11.3.min.js"></script>
+
+<script>
+    //1对象的上下文依赖
+    var str = "我是一个 String 对象 , 我声明在这里 , 但我不是独立存在的！"
+    var obj = {
+        des: "我是一个 Object 对象 , 我声明在这里，我也不是独立存在的。"
+    };
+    var fun = function () {
+        console.log("我是一个Function 对象！ 谁调用我， 我属于谁： ", this);
+    };
+    obj.fun = fun;
+    console.log(this === window); // 打印true 
+    console.log(window.str === str); // 打印 true 
+    console.log(window.obj === obj); // 打印true 
+    console.log(window.fun === fun); // 打印 true 
+    fun(); // 打印 我是一个 Function对象！ 谁调用我， 我属于谁： window 
+    obj.fun(); // 打印 我是一个 Function 对象！谁调用我，我属于谁：obj 
+    fun.apply(str); // 打印我是一个 Function 对象！ 谁调用我， 我属于谁： str
+
+
+
+    //2字面式 (literal notation) 对象声明
+    var person = {
+        name: "张三",
+        age: 26,
+        gender: "男",
+        eat: function (stuff) {
+            alert("我在吃" + stuff);
+        }
+    };
+    person.height = 176;
+    delete person["age"];
+
+
+    // 3构造器 Person 本身是一个函数对象 
+    function Person() { // 此处可做一些初始化工作 
+    }
+
+    //它有一个名叫 prototype 的属性 
+    Person.prototype = {
+        name: "张三",
+        age: 26,
+        gender: "男",
+        eat: function (stuff) {
+            alert("我在吃" + stuff);
+        }
+    }
+    //使用 new 关键字构造对象 
+    var p = new Person();
+
+
+
+    // 4对象的 __proto__ 属性和隐式引用
+    function Person(name) {
+        this.name = name;
+    }
+    var p = new Person();
+
+    //对象的隐式引用指向了构造器的 prototype 属性，所以此处打印 true  
+    console.log(p.__proto__ === Person.prototype);
+
+    //原型本身是一个 Object 对象，所以他的隐式引用指向了Object 构造器的 prototype 属性 , 故而打印 true 
+    console.log(Person.prototype.__proto__ === Object.prototype);
+
+    // 构造器 Person 本身是一个函数对象，所以此处打印 true
+    console.log(Person.__proto__ === Function.prototype);
+
+
+    //5利用原型链 Horse->Mammal->Animal 实现继承
+    // 声明 Animal 对象构造器 
+    function Animal() {}
+
+    //将Animal 的 prototype 属性指向一个对象， 亦可直接理解为指定 Animal 对象的原型 
+    Animal.prototype = {
+        name: "animal",
+        weight: 0,
+        eat: function () {
+            alert("Animal is eating!");
+        }
+    }
+    // 声明 Mammal 对象构造器 
+    function Mammal() {
+        this.name = "mammal";
+    }
+
+    // 指定 Mammal 对象的原型为一个 Animal 对象。 
+    // 实际上此处便是在创建 Mammal 对象和Animal 对象之间的原型链 
+    Mammal.prototype = new Animal();
+
+
+    // 声明 Horse 对象构造器 
+    function Horse(height, weight) {
+        this.name = "horse";
+        this.height = height;
+        this.weight = weight;
+    }
+    // 将 Horse对象的原型指定为一个 Mamal 对象，继续构建 Horse 与 Mammal 之间的原型链 
+    Horse.prototype = new Mammal(); // 重新指定 eat方法 , 此方法将覆盖从 Animal 原型继承过来的 eat 方法 
+    Horse.prototype.eat = function () {
+        alert("Horse iseating grass!");
+    }
+    // 验证并理解原型链 
+    var horse = new Horse(100, 300);
+    console.log(horse.__proto__ === Horse.prototype);
+    console.log(Horse.prototype.__proto__ === Mammal.prototype);
+    console.log(Mammal.prototype.__proto__ === Animal.prototype);
+</script>
+
+</html>

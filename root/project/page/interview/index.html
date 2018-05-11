@@ -1,0 +1,68 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="maximum-scale=1,minimum-scale=1,user-scalable=0,width=device-width,initial-scale=1"><title>interview</title><link href="../../static/css/lib/mui.min.css" rel="stylesheet"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script></head><style>.completed{text-decoration:line-through}</style><body><header class="mui-bar mui-bar-nav"><a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a><h1 class="mui-title">interview</h1></header><div class="mui-content"><div class="mui-card"><ul class="mui-table-view"><li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#">1. 通过一个key控制 console.log开关</a><div class="mui-collapse-content"><pre>
+                            <code class="javascript"> 
+                                var consoleHolder = console; 
+                                function debug(bool){ 
+                                    if(!bool){ 
+                                        consoleHolder = console; 
+                                        console = {}; 
+                                        Object.keys(consoleHolder).forEach(function(key){
+                                            console[key] = function(){}; 
+                                        }) 
+                                    }else{ 
+                                        console = consoleHolder; 
+                                    } 
+                                } 
+                                debug(false);
+                            </code>
+                        </pre></div></li><li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#">2. 请写一段代码，要求拓展console.log方法...</a><div class="mui-collapse-content"><h4>请写一段代码，要求拓展console.log方法，在每个输出前增加一个自增序号,console.log("foo");输出1:foo 2:bar</h4><pre>
+                            <code class="javascript"> 
+                            var index = 0; 
+                            console.log = (function (cb) { 
+                                return function (str) { 
+                                    index++; cb.call(console.log, index + ":" + str);
+                                } 
+                            })(console.log);
+                            </code>
+                        </pre></div></li><li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#">3. 请解释一下下面的代码在 chrome 里面执行的结果...</a><div class="mui-collapse-content"><h4>请解释一下下面的代码在 chrome 里面执行的结果，以及修改方法和原因：</h4><pre>
+                            <code class="javascript"> 
+                                //题目所示代码如下：
+                                for (var i = 0; i＜5; i++) { 
+                                    setInterval(function(){ 
+                                        console.log(i) 
+                                    },1000) 
+                                } 
+                                //解答：原因 JavaScript 没有块作用域,等运行完了 i=5 修复方法 
+                                //(1) 用 let 创建作用域 
+                                for (let i=0 ; i＜5; i++) { 
+                                    setInterval(function(){ 
+                                        console.log(i) 
+                                    },1000) 
+                                } 
+                                //(2)用闭包解决 
+                                for (var i=0 ; i＜5; i++) { 
+                                    setInterval((function(i){
+                                        return function(){ console.log(i) 
+                                        } 
+                                    })(i),1000) 
+                                }
+                            </code>
+                        </pre></div></li><li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#">4. 请解释一下下面的代码在 chrome 里面执行的结果...</a><div class="mui-collapse-content"><h4>请解释以下代码在 chrome 的执行顺序是 1 4 5 2 3, 原因</h4><pre>
+                            <code class="javascript"> 
+                                //题目所示代码如下：
+                                 console.log(1); setTimeout(() => { 
+                                    console.log(2); 
+                                    setTimeout(() => { 
+                                         console.log(3); 
+                                    }) 
+                                 }); 
+                                
+                                new Promise(() => {
+                                    console.log(4);
+                                    new Promise(() => { 
+                                        console.log(5); 
+                                    }); 
+                                }); 
+                                //解答：2 因为浏览器限制,setTimeout 和 setInterval 最低延迟大于 4ms
+                               
+                            </code>
+                        </pre></div></li><li class="mui-table-view-cell mui-collapse"><a class="mui-navigate-right" href="#" id="testTitle">5. 测试dom渲染</a><div class="mui-collapse-content"><div id="testTxt"></div></div></li></ul></div></div><script src="../../static/script/lib/mui.min.js"></script><script src="../../static/script/lib/jquery-1.11.3.min.js"></script><script>var str="变量渲染",html=function(){}.toString().match(/[^]*\/\*([^]*)\*\//)[1];console.log(html),$("#testTxt").append(html)</script><script type="text/template" id="html_template"><div>HTML代码</div></script><script>var html=document.getElementById("html_template").innerHTML</script></body></html>

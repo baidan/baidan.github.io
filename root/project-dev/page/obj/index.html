@@ -94,7 +94,7 @@
 
     //5利用原型链 Horse->Mammal->Animal 实现继承
     // 声明 Animal 对象构造器 
-    function Animal() {}
+    function Animal() { }
 
     //将Animal 的 prototype 属性指向一个对象， 亦可直接理解为指定 Animal 对象的原型 
     Animal.prototype = {
@@ -130,6 +130,24 @@
     console.log(horse.__proto__ === Horse.prototype);
     console.log(Horse.prototype.__proto__ === Mammal.prototype);
     console.log(Mammal.prototype.__proto__ === Animal.prototype);
+
+
+
+    for (var i = 0; i < 60; i++) {
+        (function (i) {
+            console.log("i======",i)
+            setInterval(function () {
+                $("#learningdata1204276").trigger("click");
+
+                (function(){
+                    setTimeout(function () {
+                    $(".layui-layer-close").trigger("click");
+                }, 2000)
+                })()
+                
+            }, 2000)
+        })(i)
+    }
 </script>
 
 </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>ssr</title>
+    <link rel="stylesheet" href="../../static/css/lib/mui.min.css">
+</head>
+
+<body>
+
+    <header class="mui-bar mui-bar-nav">
+        <h1 class="mui-title">vue</h1>
+    </header>
+    <div class="mui-content">
+        <div class="mui-card">
+            <a href="ssr://NDUuNzcuMTA4LjE5MToxMjMwNjpvcmlnaW46YWVzLTEyOC1jdHI6dGxzMS4yX3RpY2tldF9hdXRoOlltRnBaR0Z1TG5SdmNBLz9vYmZzcGFyYW09">ssr://NDUuNzcuMTA4LjE5MToxMjMwNjpvcmlnaW46YWVzLTEyOC1jdHI6dGxzMS4yX3RpY2tldF9hdXRoOlltRnBaR0Z1TG5SdmNBLz9vYmZzcGFyYW09</a>
+        </div>
+        <div class="mui-card">
+            <a href="ssr://MTA3LjE5MS40My4yNToxMjMwNjpvcmlnaW46Y2hhY2hhMjA6cGxhaW46WW1GcFpHRnVMblJ2Y0EvP29iZnNwYXJhbT0= ">ssr://MTA3LjE5MS40My4yNToxMjMwNjpvcmlnaW46Y2hhY2hhMjA6cGxhaW46WW1GcFpHRnVMblJ2Y0EvP29iZnNwYXJhbT0=</a>
+        </div>
+    </div>
+</body>
+
+
+
+<script src="../../static/script/lib/mui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<script>
+    mui.init({
+        swipeBack: true //启用右滑关闭功能
+    });
+    window.addEventListener('toggle', function(event) {
+        if (event.target.id === 'M_Toggle') {
+            var isActive = event.detail.isActive;
+            var table = document.querySelector('.mui-table-view');
+            var card = document.querySelector('.mui-card');
+            if (isActive) {
+                card.appendChild(table);
+                card.style.display = '';
+            } else {
+                var content = document.querySelector('.mui-content');
+                content.insertBefore(table, card);
+                card.style.display = 'none';
+            }
+        }
+    });
+</script>
+</body>
+
+</html>

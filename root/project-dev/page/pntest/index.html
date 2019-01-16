@@ -1,0 +1,980 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="dns-prefetch" href="//bank-static.pingan.com.cn">
+    <meta name="renderer" content="webkit">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="W_design" content="750">
+    <meta name="keywords" content="平安银行,新客福利,新客专享">
+    <meta name="description" content="不能错过的平安银行新客福利,新客专享5.7%高收益产品">
+    <meta name="WT.pa_cmid" content="新客福利">
+    <meta name="WT.pageID" content="">
+    <script>!function(e,h){function b(){var u=d.getBoundingClientRect().width;u/a>750&&(u=750*a);var v=u/7.5;d.style.fontSize=v+"px",f.rem=e.rem=v}var n,t=e.document,d=t.documentElement,l=t.querySelector('meta[name="viewport"]'),o=t.querySelector('meta[name="flexible"]'),a=0,s=0,f=h.flexible||(h.flexible={});if(l){console.warn("将根据已有的meta标签来设置缩放比例");var g=l.getAttribute("content").match(/initial\-scale=([\d\.]+)/);g&&(s=parseFloat(g[1]),a=parseInt(1/s))}else{if(o){var k=o.getAttribute("content");if(k){var p=k.match(/initial\-dpr=([\d\.]+)/),c=k.match(/maximum\-dpr=([\d\.]+)/);p&&(a=parseFloat(p[1]),s=parseFloat((1/a).toFixed(2))),c&&(a=parseFloat(c[1]),s=parseFloat((1/a).toFixed(2)))}}}if(!a&&!s){var r=e.navigator.userAgent,j=(!!r.match(/android/gi),!!r.match(/iphone/gi)),q=j&&!!r.match(/OS 9_3/),m=e.devicePixelRatio;a=j&&!q?m>=3&&(!a||a>=3)?3:m>=2&&(!a||a>=2)?2:1:1,s=1/a}if(d.setAttribute("data-dpr",a),!l){if(l=t.createElement("meta"),l.setAttribute("name","viewport"),l.setAttribute("content","initial-scale="+s+", maximum-scale="+s+", minimum-scale="+s+", user-scalable=no"),d.firstElementChild){d.firstElementChild.appendChild(l)}else{var i=t.createElement("div");i.appendChild(l),t.write(i.innerHTML)}}e.addEventListener("resize",function(){clearTimeout(n),n=setTimeout(b,300)},!1),e.addEventListener("pageshow",function(u){u.persisted&&(clearTimeout(n),n=setTimeout(b,300))},!1),"complete"===t.readyState?t.body.style.fontSize=12*a+"px":t.addEventListener("DOMContentLoaded",function(){t.body.style.fontSize=12*a+"px"},!1),b(),f.dpr=e.dpr=a,f.refreshRem=b,f.rem2px=function(v){var u=parseFloat(v)*this.rem;return"string"==typeof v&&v.match(/rem$/)&&(u+="px"),u},f.px2rem=function(v){var u=parseFloat(v)/this.rem;return"string"==typeof v&&v.match(/px$/)&&(u+="rem"),u}}(window,(window.lib||(window.lib={})));window.__STOP_FC_INIT__ = true;
+</script>
+    <script type="text/javascript">
+        if (/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent)) || !!window.navigator.userAgent.toLocaleLowerCase().match('paebank') || window.navigator.userAgent.toLocaleLowerCase().indexOf('micromessenger') > -1 || window.navigator.userAgent.toLocaleLowerCase().indexOf('banka') > -1 || (navigator.userAgent.toLowerCase().match(/pars\/([\d.]+)/) && navigator.userAgent.toLowerCase().match(/pars\/([\d.]+)/).length > 0)) {
+
+        } else {
+          var userAgent = navigator.userAgent;
+          if (!(userAgent.indexOf("Chrome") > -1)) {
+            alert('您目前使用的浏览器无法正常打开页面，请使用google chrome 打开');
+          }
+        }
+        window.WTNotAutoInit = true;
+    </script>
+    <link rel="stylesheet" href="https://bank-static.pingan.com.cn/app_series/youhui/1808/xkfl/css/xkfl.css?v=201811920">
+    <style type="text/css">
+/*.loading-wrapper{width: 2rem; height: 2rem; background-color: rgba(0, 0, 0, .6); border-radius: .08rem; position: fixed; top: 50%; left: 50%; z-index: 500; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+.loading-wrapper .loading-img{ display: block; width: .84rem; height: .84rem; margin: .3rem auto .25rem;}
+.loading-wrapper .loading-desc{ color: #fff; font-size: .3rem; line-height: 1; text-align: center; }
+.loading-wrapper .loading-close{ width: .4rem; height: .4rem; background: url(https://bank-static.pingan.com.cn/app_img/public/v10/loading_close.png) 0 0 no-repeat; background-size: 100% 100%; position: absolute; top: -.45rem; right: -.45rem;}*/
+.dialog-wrap{position: fixed;left: 0;top: 0;right: 0;bottom: 0;background-color: rgba(0,0,0,.6);z-index: 500;display: none;}
+.dialog-wrap .dialog-box{width: 80%;background-color: #fff;border-radius: .1rem;position: absolute;top: 50%;left: 50%;z-index: 499;-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%);text-align: center;height:inherit;}
+.dialog-wrap .dialog-box .dialog-hd-title{font-size: .36rem;color: #3f4246;padding-top: .6rem;}
+.dialog-wrap .dialog-box .dialog-bd-desc{font-size: .28rem;color: #63666b;line-height: .38rem;text-align: center;padding: .35rem .45rem .6rem;}
+.dialog-wrap .dialog-box .dialog-ft-btn{display: block;font-size: .32rem;color: #f37938;padding: .3rem 0;border-top: 1px solid #e7e7e7;}
+.dialog-wrap .dialog-box .dialog-ft-btn:active{background-color: #eee;}
+[v-cloak] {
+  display: none;
+}</style>
+    <style>.lazy-prd{background-color:#fff;margin-top:.3rem}.lazy-prd-info{padding:.2rem .4rem .4rem;height:2.6rem}.lazy-prd-title{height:.4rem;padding:.2rem;background:#f5f5f5}.lazy-info{margin-top:.3rem}.lazy-clearfix:after{content:"";display:block;clear:both;visibility:hidden;height:0}.lazy-left{width:48%;float:left}.lazy-right{width:48%;margin-left:.2rem;float:right}.lazy-rate{height:.9rem;margin-top:.1rem;background-color:#f5f5f5}.lazy-text{height:.3rem;margin-top:.1rem;background-color:#f5f5f5}.lazy-btn{height:100%;width:.9rem;padding:0 .2rem;background-color:#f5f5f5}.lazy-zsfl{background-color:#fff;padding:.2rem 0;}.lazy-zsfl-prd{width:6.74rem;height:2.04rem;margin:.2rem auto 0;background-color:#f5f5f5}.lazy-zsfl-item{width:3.19rem;height:1.67rem;margin-left:.3rem;background-color:#f5f5f5}.lazy-zsfl-title{width:6.74rem;height:.5rem;margin:0 auto .2rem;background-color:#f5f5f5}</style>
+</head>
+<body>
+    <!--  loading start  -->
+<!-- <div class="loading-wrapper" id="J_loading-wrapper">
+	<a class="loading-close" id="J_loading-close" href="javascript:;" otype="button" otitle="关闭loading"></a>
+	<img class="loading-img" src="https://bank-static.pingan.com.cn/app_img/public/v10/loadingR1.gif" alt="loading" />
+	<p class="loading-desc">加载中...</p>
+</div> -->
+<!--  loading end  -->
+<!--  dialog start  -->
+<section class="dialog-wrap" id="J-dialog-wrap">
+	<div class="dialog-box">
+        <h3 class="dialog-hd-title"></h3>
+  	    <p class="dialog-bd-desc" id="J-dialog-text">test text</p>
+  	    <a class="dialog-ft-btn" href="javascript:;" otype="button" otitle="确定" id="J-btnClose">确定</a>
+    </div>
+</section>
+<!--  dialog end  -->
+
+    <div class="body-wrapper" id="app">
+        <div class="banner-wrapper">
+            <div class="banner-pro">
+                <a href="javascript:;" :data-href="bgImg.actionUrl" class="js-jumpEvent" otype="button" :otitle="'背景图片-' + bgImg.materialName">
+                    <!-- 背景图片不限高 -->
+                    <img :src="bgImg.imageUrl" class="banner-bg" :alt="bgImg.materialName">
+                    <h2 class="banner-title" v-if="bgImgTxt[0]" v-cloak>
+                        <span>{{ bgImgTxt[0] }}</span>
+                    </h2>
+                </a>
+                <!-- <div class="banner-topic"></div> -->
+                <!-- banner轮播 -->
+                <div class="banner flex" v-show="showBanner" v-cloak>
+                    <div class="swiper-container banner-swiper banner-swiper-active" id="js-bannerSwiper">
+                        <div class="swiper-wrapper">
+                            <a class="swiper-slide banne-swiper-item js-jumpEvent" v-for="(banner, index) in topBanners" href="javascript:;" :data-href="banner.advertInfo.actionUrl" otype="button" :otitle="'banner轮播-' + banner.advertInfo.materialName">
+                                <div class="card-img">
+                                    <img :src="banner.advertInfo.imageUrl" :alt="banner.advertInfo.materialName">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-box">
+            <div class="lazy-zsfl" v-if="hdImgs_1_lazy">
+                <div class="lazy-zsfl-title"></div>
+                <div class="flex">
+                    <div class="lazy-zsfl-item"></div>
+                    <div class="lazy-zsfl-item"></div>
+                </div>
+            </div>
+            <!-- 专属福利 -->
+            <section v-cloak v-if="hdImgs_1.length > 0">
+                <!-- 标题组件1 -->
+                <div class="prd-tit flex flex-vc" v-if="ui_titles['1'].titleText || ui_titles['1'].moreText">
+                    <h3 class="prd-title flex-1">{{ ui_titles['1'].titleText }}</h3>
+                    <a href="javascript:;" :data-href="ui_titles['1'].moreUrl" otype="button" :otitle="ui_titles['1'].titleText + '-' + ui_titles['1'].moreText" class="more js-jumpEvent">{{ ui_titles['1'].moreText }}</a>
+                </div>
+                <!-- 广告组件专属福利 -->
+                <div class="welfare swiper-container" id="j-hdImgs_1-swiper">
+                <!-- 券卡数量小于3加类 xkfl-between-->
+                    <div class="flex swiper-wrapper" :class="{'xkfl-between': hdImgs_1.length < 3}">
+                        <a v-for="imgs_1 in hdImgs_1" href="javascript:;" class="prd-welfare lazy-img-s swiper-slide js-jumpEvent" type="button" :otitle="imgs_1.shopWindowName" :data-href="imgs_1.advertInfo.actionUrl">
+                            <img :data-echo="imgs_1.advertInfo.imageUrl">
+                        </a>
+                    </div>
+                </div>
+                <!-- 0305新增产品卡片 -->
+                <!-- <div>
+                    <div v-for="wideScreen in wideScreen_imgs" class="welfare-list welfare-list-speci lazy-img-s">
+                        <a :href="wideScreen.link || 'javascript:;'" class="" otype="button" :otitle="'专属福利-' + wideScreen.imageName">
+                            <img :src="wideScreen.imageUrl" :alt="wideScreen.imageName" />
+                        </a>
+                    </div>
+                </div> -->
+            </section>
+            <!-- 专享理财 -->
+            <div class="lazy-prd" v-show="lazyPrd">
+                <div class="lazy-title"></div>
+                <div class="flex">
+                    <div class="lazy-prd-info flex-1">
+                        <div class="lazy-prd-title"></div>
+                            <div class="lazy-info lazy-clearfix flex">
+                                <div class="lazy-left">
+                                    <div class="lazy-rate"></div>
+                                    <div class="lazy-text"></div>
+                                </div>
+                                <div class="lazy-right flex-1">
+                                    <div class="lazy-text"></div>
+                                    <div class="lazy-text"></div>
+                                    <div class="lazy-text"></div>
+                                    <div class="lazy-text"></div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="lazy-btn flex flex-vc"></div>
+            </div>
+            <div class="lazy-prd" v-show="lazyPrd">
+                <div class="flex">
+                    <div class="lazy-prd-info flex-1">
+                        <div class="lazy-prd-title"></div>
+                        <div class="lazy-info lazy-clearfix flex">
+                            <div class="lazy-left">
+                                <div class="lazy-rate"></div>
+                                <div class="lazy-text"></div>
+                            </div>
+                            <div class="lazy-right flex-1">
+                                <div class="lazy-text"></div>
+                                <div class="lazy-text"></div>
+                                <div class="lazy-text"></div>
+                                <div class="lazy-text"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lazy-btn"></div>
+            </div>
+            <!-- 专享理财 -->
+            <section>
+                <!-- 标题组件2 -->
+                <div class="prd-tit flex flex-vc" v-if="ui_titles['2'].titleText || ui_titles['2'].moreText" v-cloak>
+                    <h3 class="prd-title flex-1">{{ ui_titles['2'].titleText }}</h3>
+                    <a href="javascript:;" :data-href="ui_titles['2'].moreUrl" otype="button" :otitle="ui_titles['2'].titleText + '-' + ui_titles['2'].moreText" class="more js-jumpEvent">{{ ui_titles['2'].moreText }}</a>
+                </div>
+                <!-- js控制 第一区域遍历 产品售磬时根据pageMakerSellOut处理 -->
+                <div class="prd-list" v-for="(first_pro, index) in firstGroupPrts" v-cloak ref="prd_list_1" v-if="sellOutHide(first_pro)">
+                    <a href="javascript:;" :data-href="setProJumpUrl(first_pro)" otype="button" :otitle="ui_titles['2'].titleText + '-' + first_pro.productName" class="prd-hy flex js-jumpEvent" :class="{'disabled': first_pro.prdSaleStatus === 'SALE_OUT' || !first_pro.jumpLink}">
+                        <!-- 产品预告加类 product-herald -->
+                        <div class="flex-1" :class="{'product-unsell': first_pro.prdSaleStatus === 'SALE_OUT', 'product-herald': first_pro.prdSaleStatus !== 'SALE_OUT' && first_pro.squareDoc === '产品预告'}">
+                            <div class="prd-hy-cont flex flex-vc">
+                                <h4 class="prd-hy-title ell" v-html="repStr(first_pro.remark || first_pro.productName)"></h4>
+                                <p class="prd-hy-tx" v-if="first_pro.superScript">{{ first_pro.superScript }}</p>
+                            </div>
+                            <div>
+                                <div class="prd-hy-box flex flex-hc">
+                                    <div class="prd-hy-rate">
+                                        <!-- <div class="pro-num">
+                                            <strong class="pro-num-big">5</strong>.2%
+                                        </div> -->
+                                        <div v-html="incomeShow(first_pro.yield)"></div>
+                                        <p class="prd-hy-text">{{ first_pro.incomeType }}</p>
+                                    </div>
+                                    <ul class="prd-hy-detail flex flex-1">
+                                        <li class="prd-detail-con ell" v-html="repStr(first_pro.marketingDiscourse)"></li>
+                                        <li class="prd-detail-time ell" v-html="getSellingHtml(first_pro.sellingPoint1, first_pro.sellingPoint2, first_pro.sellingPoint3)">49天&nbsp;|&nbsp;5万起</li>
+                                    </ul>
+                                </div>
+                                <!-- 产品备注 -->
+                                <!-- <div class="pl50 fs0">
+                                    <p class="limit">限时专供</p>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="buy-btn flex flex-vc" v-if="first_pro.squareDoc !== '产品预告'">
+                            <span class="buy-btn-txt">{{ first_pro.squareDoc || '立即购买' }}</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            <!-- 热门理财 -->
+            <section>
+                <div class="prd-tit flex flex-vc" v-if="ui_titles['3'].titleText || ui_titles['3'].titleText" v-cloak>
+                    <h3 class="prd-title flex-1">{{ ui_titles['3'].titleText }}</h3>
+                    <a href="javascript:;" :data-href="ui_titles['3'].moreUrl || 'javascript:;'" otype="button" :otitle="ui_titles['3'].titleText + '-' + ui_titles['3'].moreText" class="more js-jumpEvent">{{ ui_titles['3'].moreText }}</a>
+                </div>
+                <!-- 热门理财轮播 -->
+                <div v-cloak>
+                    <div class="swiper-container swiper-box" id="j-swiper-pro" v-if="second_pro_area">
+                        <!-- js控制 第二组产品遍历 产品售磬时根据pageMakerSellOut处理 -->
+                        <ul class="card-box clearfix swiper-wrapper" >
+                            <li class="swiper-slide" v-for="second_pro in secondGroupPrts"  v-if="sellOutHide(second_pro)">
+                                <a href="javascript:;" :data-href="setProJumpUrl(second_pro)" otype="button" :otitle="ui_titles['3'].titleText + '-' + second_pro.productName" class="prd-hy flex js-jumpEvent"  :class="{'product-unsell': second_pro.prdSaleStatus === 'SALE_OUT'}">
+                                    <div class="flex-1">
+                                        <div class="prd-hy-cont flex flex-vc">
+                                            <h4 class="prd-hy-title ell">{{ second_pro.productName }}</h4>
+                                            <p class="prd-hy-tx" v-if="second_pro.superScript">{{ second_pro.superScript }}</p>
+                                        </div>
+                                        <div class="prd-hy-box flex flex-hc">
+                                            <div class="prd-hy-rate">
+                                                <div v-html="incomeShow(second_pro.yield)"></div>
+                                                <p class="prd-hy-text">{{ second_pro.incomeType }}</p>
+                                            </div>
+                                            <ul class="flex flex-1 prd-hy-detail">
+                                                <li class="prd-detail-con ell">{{ second_pro.marketingDiscourse }}</li>
+                                                <li class="prd-detail-text ell" v-html="getSellingHtml(second_pro.sellingPoint1, second_pro.sellingPoint2, second_pro.sellingPoint3)">360天&nbsp;|&nbsp;300万起</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="swiper-pagination swiper-pagination-hotprd"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="main-box" id='j-main-box-mt-10'>
+            <!-- js轮播 广告部分 -->
+            <!-- <div class="inform swiper-container" id="j-swiper-hd" v-if="activity_imgs.length > 0" v-cloak>
+                <div class="inform-cont swiper-wrapper">
+                    <div v-for="activity in activity_imgs" class="inform-key lazy-img swiper-slide j-lazy">
+                        <a :href="activity.link" :otitle="'热门活动区-' + activity.imageName" otype="button" class="inform-tx" >
+                            <img :data-echo="activity.imageUrl + '?v=201811920'" class="inform-pic">
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-pagination swiper-pagination-inform"></div>
+            </div> -->
+            <!-- 0305新增田字格 -->
+            <div class="swiper-container" id="j-fourPalaces" v-cloak v-show="hdImgs_2_area">
+                <div class="card-icon-box swiper-wrapper">
+                    <ul class="clearfix swiper-slide" v-for="(screen_B_imgs, screen_B_i) in hdImgs_2.screenArr">
+                        <li v-for="(imgs_B, imgs_B_i) in screen_B_imgs" v-if="imgs_B.imgSrc && imgs_B_i < 4">
+                            <a href="javascript:;" :data-href="imgs_B.url" otype="button" :otitle="'第二个多图组件-' + (screen_B_i + 1) + '屏-第' + (imgs_B_i + 1) + '张'" class="lazy-img-s js-jumpEvent">
+                                <img :data-echo="imgs_B.imgSrc + '?v=201811920'" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="j-hdImgs_2-pagination swiper-pagination-inform"></div>
+            </div>
+
+            <!-- 每天学点理财知识 -->
+            <div class="video">
+                <div class="newcont-tit flex flex-vc" v-if="ui_titles['4'].titleText || ui_titles['4'].moreText" v-cloak>
+                    <h3 class="newcont-title flex-1">{{ ui_titles['4'].titleText }}</h3>
+                    <a href="javascript:;" :data-href="ui_titles['4'].moreUrl" otype="button" :otitle="ui_titles['4'].titleText + '-' + ui_titles['4'].titleText" class="more js-jumpEvent">{{ ui_titles['4'].moreText }}</a>
+                </div>
+                <div class="newcont-box" id="j-zixun"></div>
+                <!-- <ul class="newcont-box" id="j-zixun">
+                    <li class="newcont-box-cont">
+                        <a :href="newZiXun.url || 'javascript:;'" otype="button" :otitle="newZiXun.title" class="flex flex-hc">
+                            <div class="new-content flex-1">
+                                <p class="new-content-text">{{ newZiXun.title }}</p>
+                                <div class="browse">
+                                    <p class="browse-text" v-if="newZiXun.readings">今天 {{ newZiXun.readings }}阅读</p>
+                                </div>
+                            </div>
+                            <div class="new lazy-img-s j-lazy">
+                                <img :data-src="newZiXun.thumbnail" :alt="newZiXun.title" class="newpic dsn">
+                            </div>
+                        </a>
+                    </li>
+                </ul> -->
+            </div>
+            <!-- 理财大讲堂 -->
+            <div v-cloak class="video" id="j-video">
+                <!-- <div class="video-key lazy-img j-lazy">
+                    <a :href="videoData.broadcastLink || 'javascript:;'" otitle="平安证券-明星投顾" otype="button" class="video-tx" >
+                        <h4 class="video-key-title">理财大讲堂</h4>
+                        <img :data-src="videoData.broadcastBanner" :alt="videoData.theme" class="video-pic dsn">
+                        <div class="list-video-btn"></div>
+                    </a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <script src="https://bank-static.pingan.com.cn/app_com/??libs/zepto/1.2.0/zepto.min.js,pab/1.0.0/pab.js,aladdin/ibank/1.0.16/aladdin.ibank.min.js,share/2.0.0/share.js,libs/swiper/3.4.2/js/swiper.min.js,infosdk/1.1.0/js/infosdk.js,webtrends/h5/2.0.0/banksdc_m.js"></script>
+    <script src="https://bank-static.pingan.com.cn/app_js/??common/activity-runtime/1.0.1/runtime.js,libs/vue/2.2.0/vue.min.js,libs/echo/1.7.3/echo.min.js"></script>
+    <script src="https://bank-static.pingan.com.cn/app_com/float/1.0.0/float.js"></script>
+    <script>$(function () {
+  'use strict'
+  /* eslint-disable no-new, no-alert */
+  new Vue({
+    el: '#app',
+    data: {
+      commKK: window.activityUtils.commKK,
+      showBanner: false,
+      backgroundBanners: [], // 背景图片
+      topBanners: [], // 顶部广告数据
+      firstGroupPrts: {}, // 第一组产品数据
+      secondGroupPrts: {}, // 第二组产品数据
+      bannerSwiper: null,
+      proSwiper: null,
+      hdImgs_1_swiper: null,
+      hdImgs_2_swiper: null,
+      hdImgs_1_lazy: true, // 四宫格骨架
+      lazyPrd: true,
+      isKdApp: window.activityUtils.commKK.isKD,
+      showFooler: !window.activityUtils.commKK.isKD,
+      pageAttr: {}, // 页面seo、分享信息
+      bgImg: {}, // 背景图片
+      bgImgTxt: [], // 文字组件
+      bgColor: '', // 背景颜色
+      ui_titles: { // 对应标题组件
+        '1': {},
+        '2': {},
+        '3': {},
+        '4': {}
+      },
+      hdImgs_1: [], // 专享福利卡券图片
+      hdImgs_2: {}, // 四宫格组件2
+      product: { // 产品
+        '0': {},
+        '1': {}
+      },
+      MP: window.getUrlSource(), // 用埋点的方法取8大参数
+      second_pro_area: true, // 产品第二区域显示
+      hdImgs_2_area: true, // 第二个多图组件位置
+      showShareBtn: false, // 分享给好友按钮显示
+      ucpUrl: ''
+    },
+    created: function () {
+      this.pageShow()
+      this.main()
+    },
+    methods: {
+      main: function () {
+        var self = this
+        if (self.commKK.isWX) {
+          // 防止用户复制链接转发
+          if (window.sessionStorage.getItem('getWeiXinInfo')) {
+            if (window.sessionStorage.getItem('KK_ucpUrl')) {
+              self.ucpUrl = window.sessionStorage.getItem('KK_ucpUrl')
+              window.sessionStorage.removeItem('KK_ucpUrl')
+              window.sessionStorage.removeItem('getWeiXinInfo')
+              self.wxAutoLogin()
+            } else {
+              window.sessionStorage.setItem('KK_ucpUrl', window.location.href)
+              history.go(-1)
+            }
+          } else {
+            window.sessionStorage.setItem('getWeiXinInfo', true)
+            //self.jumpUcp()
+          }
+        } else {
+          self.render()
+        }
+      },
+      render: function () {
+        // 手机浏览和PC只能在chrome执行
+        if (window.activityUtils.commKK.isMobile || (navigator.userAgent.indexOf('Chrome') > -1)) {
+          this.queryPageMakerSetting()
+          this.lisntWindow()
+          this.bindEvents()
+          this.echonInit()
+        }
+      },
+      jumpUcp: function () {
+        var url, pageHref,
+          searchObj = window.activityUtils.hrefChange.splitHref(location.href).aObj,
+          deleKey = ['headimgurl', 'nickname', 'nonce', 'openid', 'signature', 'subscribe', 'timestamp', 'weappNo', 'sex', 'signatureUnionid', 'unionid', 'picurl']
+        $.each(deleKey, function (i, t) {
+          delete searchObj[t]
+        })
+        searchObj = window.activityUtils.hrefChange.objToStr(searchObj)
+        pageHref = window.location.origin + window.location.pathname + (searchObj ? ('?' + searchObj) : '')
+        url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx95415c456652ce73&redirect_uri=https%3A%2F%2Feim.pingan.com.cn%2Fbank%2Fredirect%3FbackUrl%3D' + encodeURIComponent(pageHref) + '%26weappNo%3DPINGAN_BANK_01&response_type=code&scope=snsapi_base&state=sig#wechat_redirect'
+        window.location.replace(url)
+      },
+      // 微信免登
+      wxAutoLogin: function () {
+        var self = this, options
+        options = {
+          url: window.PAB.domain.pafa5Domain + '/brcp/uc/cust/uc-third-auth.wxAutoLoginOnce.do',
+          type: 'POST',
+          data: {
+            // 渠道id，'BROP-MOP' - 零售渠道offer管理子系统(志宏)
+            channelId: 'BROP-MOP',
+            partnerId: 'C0013',
+            headimgurl: self.commKK.getParamVal('headimgurl', self.ucpUrl),
+            nickName: self.commKK.getParamVal('nickname', self.ucpUrl),
+            nonce: self.commKK.getParamVal('nonce', self.ucpUrl),
+            openId: self.commKK.getParamVal('openid', self.ucpUrl),
+            signature: self.commKK.getParamVal('signature', self.ucpUrl),
+            subscribe: self.commKK.getParamVal('subscribe', self.ucpUrl),
+            timestamp: self.commKK.getParamVal('timestamp', self.ucpUrl)
+          },
+          success: function (res) {
+            // 调分享方法拿登录态
+            window.shareMode && window.shareMode.getRecNo()
+            self.render()
+          },
+          error: function () {
+            self.render()
+          }
+        }
+        window.activityUtils.commKK.fetch(options)
+      },
+      // 拉取PageMaker的页面配置
+      queryPageMakerSetting: function () {
+        var self = this,
+          options = {
+            url: window.PAB.domain.rsbDomain + '/brop/mop/adms/cust/admssf/uc/bropmop/service/pagemaker/page/query',
+            data: {
+              pageKey: window.activityUtils.commKK.getParamVal('pageKey'),
+              pageStatus: '1'
+            },
+            success: function (res) {
+              if (res && res.responseCode === '000000' && res.data) {
+                self.queryPageMakerSettingHandle(res.data)
+              } else {
+                self.showDialogFun('抱歉，目前系统繁忙，请稍后再试~')
+              }
+            },
+            error: function () {
+              self.showDialogFun('抱歉，目前系统繁忙，请稍后再试~')
+            }
+          }
+        window.activityUtils.commKK.fetch(options)
+      },
+      // 拆分数据渲染
+      queryPageMakerSettingHandle: function (data) {
+        var self = this,
+          areaIds = [], // 广告组件id
+          coumtObj = { // 组件位置
+            'ui_title': 1,
+            'ui_image': 1,
+            'function_advertBanner': 1,
+            'function_live': 1,
+            'function_news': 1
+          },
+          subType = {
+            '0': {
+              cardId: [],
+              sellOut: []
+            },
+            '1': {
+              cardId: [],
+              sellOut: []
+            }
+          }
+        self.bgColor = data.background
+        self.pageAttr = data.pageAttr
+        $.each(data.widgets, function (i, t) {
+          switch (t.type) {
+            case 'function_advertBanner': // 广告组件
+              if (t.attr.areaId) {
+                // 只取第一个广告组件
+                coumtObj['function_advertBanner'] === 1 && areaIds.push(t.attr.areaId)
+                // 只取第二个广告组件
+                coumtObj['function_advertBanner'] === 2 && areaIds.push(t.attr.areaId)
+              }
+              coumtObj['function_advertBanner'] += 1
+              break
+            case 'function_live': // 直播
+              t.attr.oppId && (coumtObj['function_live'] === 1) && self.initLiveBit(t.attr.oppId)
+              coumtObj['function_live'] += 1
+              break
+            case 'function_news': // 资讯
+              t.attr.oppId && (coumtObj['function_news'] === 1) && self.initOperation(t.attr.oppId)
+              coumtObj['function_news'] += 1
+              break
+            case 'ui_title': // 标题组件
+              self.ui_titles[coumtObj['ui_title']] = t.attr
+              // 计算下个组件位置
+              coumtObj['ui_title'] += 1
+              break
+            case 'ui_image': // 四宫格组件
+              // 只取一次，多图组件的分类以产品卡片为界线
+              if (JSON.stringify(self['hdImgs_' + coumtObj['ui_image']]) === '{}') {
+                // 组件缓存
+                self['hdImgs_' + coumtObj['ui_image']] = self.regroup_ui_image(t.attr)
+              }
+              break
+            case 'function_productCard': // 产品卡片组件
+              if (t.attr.subType === '0' || t.attr.subType === '1') {
+                // 按从上到下顺序存产品的cardId
+                subType[t.attr.subType].cardId.push(t.attr.cardId)
+                // 存售馨时产品显示的状态0为售磬盖章，1为隐藏产品卡片
+                subType[t.attr.subType].sellOut.push(t.attr.sellOut)
+              }
+              // 跟业务约定产卡后的四宫格是第二个四宫格
+              if (JSON.stringify(self.hdImgs_2) === '{}') {
+                coumtObj['ui_image'] = 2
+              }
+              break
+            case 'base_text': // 单行文字组件
+              self.bgImgTxt.push(t.attr.content)
+              break
+          }
+        })
+        self.setHeadDom(data)
+        self.queryAdng(areaIds)
+        self.webtrandsInit(data)
+        self.$nextTick(function () {
+          self.init_hdImgs_2_swiper()
+          self.initAppFloat(self.pageAttr)
+        })
+        self.queryProduct(subType)
+        self.initShare(self.pageAttr)
+      },
+      // 把四宫格重组为二维数组
+      regroup_ui_image: function (imgObj) {
+        var imgArr = []
+        $.each(imgObj.screenArr, function (screenI, screenT) {
+          var screenImgs = []
+          $.each(screenT, function (rowI, rowT) {
+            screenImgs = screenImgs.concat(rowT)
+          })
+          imgArr.push(screenImgs)
+        })
+        imgObj.screenArr = imgArr
+        return imgObj
+      },
+      // 拉取pageMaker中的产品数据
+      queryProduct: function (subType) {
+        var self = this, options, cardIds
+        cardIds = subType['0'].cardId.concat(subType['1'].cardId)
+        if (cardIds.length > 0) {
+          options = {
+            url: window.PAB.domain.rsbDomain + '/brop/mop/adms/cust/admssf/bropmop/service/pagemaker/queryProduct',
+            type: 'POST',
+            data: {
+              cardIds: cardIds.join(',')
+            },
+            success: function (res) {
+              if (res && res.responseCode === '000000') {
+                res.subType = subType
+                self.queryProductHandle(res)
+              } else {
+                self.showDialogFun('抱歉，目前系统繁忙，请稍后再试~')
+              }
+            },
+            error: function () {
+              self.showDialogFun('抱歉，目前系统繁忙，请稍后再试~')
+            }
+          }
+          window.activityUtils.commKK.fetch(options)
+        } else { // 没有产品隐藏骨架图，第
+          self.second_pro_area = self.lazyPrd = false
+        }
+      },
+      // 拉取pageMaker中的产品数据后拆分数据
+      queryProductHandle: function (res) {
+        var self = this,
+          product0 = [],
+          product1 = []
+        $.each(res.data, function (i, t) { // 拆分、排序
+          var index
+          if (t) {
+            if (res.subType['0'].cardId.indexOf(t.cardId) > -1) {
+              // index常规1产品组件位置
+              index = res.subType['0'].cardId.indexOf(t.cardId)
+              // 取常规1产品售馨时产品显示的状态0为售磬盖章，1为隐藏产品卡片
+              t.pageMakerSellOut = res.subType['0'].sellOut[index]
+              product0[index] = t
+            } else {
+              // index常规2产品组件位置
+              index = res.subType['1'].cardId.indexOf(t.cardId)
+              // 取常规2产品售馨时产品显示的状态0为售磬盖章，1为隐藏产品卡片
+              t.pageMakerSellOut = res.subType['1'].sellOut[index]
+              product1[index] = t
+            }
+          }
+        })
+        self.firstGroupPrts = self.arr_notempty(product0)
+        self.secondGroupPrts = self.arr_notempty(product1)
+        self.lazyPrd = false
+        self.$nextTick(self.initSwiperPro)
+      },
+      // 售磬时根据pageMakerSellOut隐藏卡片
+      sellOutHide: function (prd) {
+        return !(prd.prdSaleStatus === 'SALE_OUT' && prd.pageMakerSellOut === '1')
+      },
+      // 拉取广告组件接口
+      queryAdng: function (areaIds) {
+        var self = this,
+          options = {
+            url: window.PAB.domain.rsbDomain + '/brop/mop/adms/cust/admssf/uc/adng/batchQuery',
+            data: {
+              areaId: areaIds.join(',')
+            },
+            success: function (res) {
+              if (res && res.responseCode === '000000') {
+                $.each(areaIds, function (i, t) {
+                  if (i === 0) { // 第1个数据为bannre
+                    self.queryBanners(res.data[t])
+                  } else if (i === 1) { // 第2个数据为卡券
+                    self.queryCardVoucher(res.data[t])
+                  }
+                })
+              } else {
+                self.showDialogFun('抱歉，目前系统繁忙，请稍后再试~')
+              }
+              self.hdImgs_1_lazy = false
+              window.scrollTo(0, 0)
+            },
+            error: function () {
+              self.hdImgs_1_lazy = false
+              self.showDialogFun('抱歉，目前系统繁忙，请稍后再试~')
+            }
+          }
+        window.activityUtils.commKK.fetch(options)
+      },
+      /*
+      * banner是在广告组件中配置，第一张为背景
+       */
+      queryBanners: function (data) {
+        var self = this,
+          shopWindowList = data && data.shopWindowList ? data.shopWindowList : []
+        self.bgImg = shopWindowList[0] ? shopWindowList[0].advertInfo : {}
+        self.topBanners = shopWindowList.slice(1)
+        self.$nextTick(self.initBanner)
+      },
+      // 卡券图片
+      queryCardVoucher: function (data) {
+        var self = this
+        data = data || {}
+        self.hdImgs_1 = data.shopWindowList || []
+        self.hdImgs_1_lazy = false
+        self.$nextTick(function () {
+          self.init_hdImgs_1_swiper()
+          window.echo.render()
+        })
+      },
+      // 设置head标签里信息
+      setHeadDom: function (data) {
+        document.title = data.title
+        window.activityUtils.commKK.setHeader({
+          title: data.title
+        })
+        $('meta[name="WT.title"], meta[name="WT.pa_cmid"]').attr('content', data.title)
+        $('meta[name="WT.pageID"]').attr('content', 'pagemaker-' + data.pageKey)
+      },
+      // 初始化直播组件
+      initLiveBit: function (oppId) {
+        if (window.InfoSDK) {
+          var nextPageSearch = window.activityUtils.hrefChange.splitHref(location.href).aObj
+          delete nextPageSearch.id
+          new window.InfoSDK.LiveBit({
+            oppId: oppId,
+            container: '#j-video',
+            size: 1, // 0, 1 显示1条, 2, 3... 显示对应条数
+            nextPageSearch: nextPageSearch
+          })
+        }
+      },
+      // 初始化资讯
+      initOperation: function (oppId) {
+        if (window.InfoSDK) {
+          var nextPageSearch = window.activityUtils.hrefChange.splitHref(location.href).aObj
+          delete nextPageSearch.id
+          new window.InfoSDK.Operation({
+            oppId: oppId,
+            container: '#j-zixun',
+            nextPageSearch: nextPageSearch
+          })
+        }
+      },
+      // 分享初始化
+      initShare: function (share) {
+        share = share || {}
+        // 分享组件限制了，必须同时输入标题，内容和活动id，没有活动id，mgm会报错
+        if (share.shareTitle && share.shareDesc && share.activityId && share.shareStatus === '1') {
+          // 执行分享初始化
+          this.weixinInit(share)
+          this.showShareBtn = true
+        }
+      },
+      // 分享组件公用方法
+      weixinInit: function (share) {
+        var options = {
+          shareObj: {
+            // 分享title 必传
+            title: share.shareTitle,
+            // 分享content 必传
+            content: share.shareDesc,
+            // 分享图片
+            picture: share.shareIcon || ''
+          },
+          // 当前活动ID,必传
+          pactivityId: share.activityId
+        }
+        window.sharePublicInit(options)
+      },
+      // 删除指定参数再拼装方法
+      impressSearch: function (url, key) {
+        var searchObj, search, strUrlObj = window.activityUtils.hrefChange.splitHref(url), urlObj = window.activityUtils.hrefChange.splitHref(location.href).aObj
+        delete urlObj.pageKey
+        delete urlObj[key]
+        searchObj = $.extend(urlObj, strUrlObj.aObj)
+        search = window.activityUtils.hrefChange.objToStr(searchObj) ? '?' + window.activityUtils.hrefChange.objToStr(searchObj) : ''
+        return strUrlObj.pathname + search + strUrlObj.hash
+      },
+      /**
+       * 处理卖点
+       * @param  {string} selling1   卖点1
+       * @param  {string} selling2   卖点2
+       * @param  {string} selling3   卖点3
+       * @return {string} html  活期 | 1000元起 | <span>7*24小时快赎</span>
+       */
+      getSellingHtml: function (selling1, selling2, selling3) {
+        // 业务场景： 卖点1为红色字体，卖点之间使用|分割，没有前面的卖点其他往前顶
+        // 有卖点1并且有卖点2的时候，卖点2拼上'|'
+        if (selling1 && selling2) {
+          selling2 = ' | ' + selling2
+        }
+        // 有卖点1||卖点2的时候，卖点3拼上'|'
+        if ((selling1 || selling2) && selling3) {
+          selling3 = ' | ' + selling3
+        }
+        var str = '<span>' + selling1 + '</span>' + selling2 + selling3
+        // html输出，防止XSS
+        return (str + '').replace(/(script)/gi, '')
+      },
+      // banner轮播
+      initBanner: function () {
+        var self = this
+        if (self.topBanners.length > 1) {
+          self.bannerSwiper = new window.Swiper ('#js-bannerSwiper', {
+            autoplay: 3000,
+            loop: true,
+            autoplayDisableOnInteraction: false,
+            effect: 'coverflow',
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            observer: true,
+            observeParents: true,
+            speed: 1000,
+            // paginationClickable: true,
+            onInit: function () {
+              self.showBanner = true
+            },
+            coverflow: {
+              rotate: 30, // 旋转的角度
+              stretch: 50, // 拉伸图片间左右的间距和密集度
+              depth: 120, // 深度切换图片间上下的间距和密集度
+              modifier: 1, // 修正值该值越大前面的效果越明显
+              slideShadows: false // 页面阴影效果
+            },
+            onDestroy: function () {
+              window.setTimeout(function () {
+                self.initBanner()
+              }, 100)
+            }
+          })
+        } else {
+          self.showBanner = true
+        }
+      },
+      // 产品卡片轮播
+      initSwiperPro: function () {
+        var self = this,
+          domNum = $('#j-swiper-pro .swiper-slide').length
+        if (domNum > 1) {
+          self.proSwiper = new window.Swiper ('#j-swiper-pro', {
+            autoplay: 3500,
+            loop: true,
+            autoplayDisableOnInteraction: false,
+            slidesPerView: 'auto',
+            pagination: '.swiper-pagination',
+            paginationType: 'custom',
+            paginationCustomRender: function (swiper, current, total) {
+              var str = '', i
+              for (i = 1; i <= total; i++) {
+                if (i === current) {
+                  str += '<span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>'
+                } else {
+                  str += '<span class="swiper-pagination-bullet"></span>'
+                }
+              }
+              return str
+            },
+            onDestroy: function () {
+              window.setTimeout(function () {
+                self.initSwiperPro()
+              }, 100)
+            }
+          })
+        } else if (domNum === 0) {
+          self.second_pro_area = false
+        }
+      },
+      // 第2个四宫格广告轮播
+      init_hdImgs_2_swiper: function () {
+        var self = this
+        if (self.hdImgs_2.screen > 1) {
+          self.hdImgs_2_swiper = new window.Swiper('#j-fourPalaces', {
+            autoplay: 3500,
+            loop: true,
+            autoplayDisableOnInteraction: false,
+            pagination: '.j-hdImgs_2-pagination',
+            slidesPerView: 'auto',
+            autoHeight: true,
+            onTransitionEnd: function () {
+              window.echo.render()
+            },
+            onDestroy: function () {
+              window.setTimeout(function () {
+                self.init_hdImgs_2_swiper()
+              }, 100)
+            }
+          })
+        } else if (!self.hdImgs_2.screen) {
+          self.hdImgs_2_area = false
+        }
+      },
+      // 去除数组中null或undefined
+      arr_notempty: function (arr) {
+        return $.map(arr, function (item, index) {
+          if (item) { return item }
+        })
+      },
+      // 第1个四宫格广告轮播
+      init_hdImgs_1_swiper: function () {
+        var self = this
+        if (self.hdImgs_1.length > 2) {
+          self.hdImgs_1_swiper = new window.Swiper('#j-hdImgs_1-swiper', {
+            slidesPerView: 'auto',
+            onTransitionEnd: function () {
+              window.echo.render()
+            },
+            onDestroy: function () {
+              window.setTimeout(function () {
+                self.init_hdImgs_1_swiper()
+              }, 100)
+            }
+          })
+        }
+      },
+      // 懒加载初始化
+      echonInit: function () {
+        window.echo.init({
+          offset: 150,
+          throttle: 50,
+          callback: function (element, op) {
+            var loadFun = function (e) {
+              $(this).parent().removeClass('lazy-img lazy-img-s')
+              $(this).off('load', loadFun)
+            }
+            $(element).on('load', loadFun)
+          }
+        })
+      },
+      // swiper横坚屏兼容
+      lisntWindow: function () {
+        var self = this
+        window.activityUtils.commKK.orientationListen(function () {
+          window.setTimeout(function () {
+            self.bannerSwiper && self.bannerSwiper.destroy(true, true)
+            self.proSwiper && self.proSwiper.destroy(true, true)
+            self.hdImgs_1_swiper && self.hdImgs_1_swiper.destroy(true, true)
+            self.hdImgs_2_swiper && self.hdImgs_2_swiper.destroy(true, true)
+          }, 600)
+        })
+      },
+      // 显示弹窗
+      showDialogFun: function (str) {
+        if (str) {
+          $('#J-dialog-text').text(str)
+          $('#J-dialog-wrap').show()
+        }
+      },
+      /*
+       *使用webtrands数据WT.hash统计来源
+       */
+      webtrandsInit: function (data) {
+        window.WTjson = window.WTjson || {} // 定义/获取全局参数
+        window.WTjson['WT.pageID'] = 'pagemaker-' + data.pageKey // 设置pageID,(渠道展示子系统-参数配置>页面管理-新建页面)进行申请
+        window.WTjson['WT.pagetitle'] = data.title // 设置pagetitle,格式：中文
+        window._tag && window._tag.init && window._tag.init()
+      },
+      // 调用分享
+      getShare: function () {
+        window.shareMode.shareNewFun()
+      },
+      /* 处理几种字段：首发基金（全中文）、1000起（数字加文字）、1.55、1.5555%、1.33%-1.55%、
+      1.33%~1.55%、1.33%+1.55%
+      ** t 第一个数字
+      ** th 第二个数字
+      ** fh 符号
+       */
+      incomeShow: function (str) {
+        return window.activityUtils.commKK.incomeShow(str)
+      },
+      // 初始化直达浮层
+      initAppFloat: function (settings) {
+        if (settings.floatStatus === '1') { // 1为pageMaker控制显示
+          window.activityUtils.commKK.initFloatSDK(settings.floatType * 1)
+        }
+      },
+      // 跳转绑卡页面
+      addCardRouter: function () {
+        var url, search
+        search = {
+          source: this.MP.N['source'],
+          outerSource: this.MP.N['outersource'],
+          url: window.location.href
+        }
+        search = encodeURIComponent(JSON.stringify(search))
+        url = 'https://bank-static.pingan.com.cn/brac-ia/accountManager/pages/addCardRouter.html?' + search
+        this.commKK.jumpPage(url)
+      },
+      // 设置产品跳转链接
+      setProJumpUrl: function (proInfo) {
+        if (proInfo.jumpLink && proInfo.prdSaleStatus !== 'SALE_OUT') {
+          return proInfo.jumpLink
+        } else {
+          return ''
+        }
+      },
+      // 替换【】为标签
+      repStr: function (str) {
+        if (str) {
+          return str.replace(/(\[|【)[^\]】]+(\]|】)/, function ($1) {
+            return $1.replace(/\[|【/, '<span>').replace(/\]|】/, '</span>')
+          })
+        } else {
+          return str
+        }
+      },
+      bindEvents: function () {
+        var self = this
+        $('#J-btnClose').on('click', function (e) {
+          $('#J-dialog-wrap').hide()
+        })
+        // 封装跳转方法
+        $('body').on('click', '.js-jumpEvent', function (e) {
+          var _url = $(this).data('href')
+          if (_url && _url !== '#' && _url !== 'javascript:;') {
+            window.activityUtils.commKK.jumpPage(self.impressSearch(_url))
+          }
+        })
+      },
+      pageShow: function () {
+        var self = this
+        if (self.commKK.isWX) {
+          $(window).on('pageshow', function (e) {
+            if (e.persisted) {
+              self.main()
+            }
+          })
+        }
+      }
+    }
+  })
+})
+</script>
+</body>
+</html>

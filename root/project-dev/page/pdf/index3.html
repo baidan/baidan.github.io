@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link href="touchpdf/jquery.touchPDF.css" rel="stylesheet">
+    </head>
+
+
+    <script src="touchpdf/jquery.min.js"></script>
+    <script src="touchpdf/pdf.compatibility.js"></script>
+    <script src="touchpdf/pdf.js"></script>
+    <script src="touchpdf/jquery.touchSwipe.js"></script>
+    <script src="touchpdf/jquery.touchPDF.js"></script>
+    <script src="touchpdf/jquery.panzoom.js"></script>
+    <script src="touchpdf/jquery.mousewheel.js"></script>
+
+    <body class="exe ti">
+
+        <div id="myPDF" style="height: 100%; width: 100%; margin: auto;"></div>
+
+        <script id="script">
+            $(function () {
+                $("#myPDF").pdf({
+                    // Path of PDF file to display
+                    source: "1.pdf",
+                    // Title of the PDF to be displayed in the toolbar
+                    title: "TouchPDF",
+                    // Array of tabs to display on the side.
+                    tabs: [],
+                    // Default background color for all tabs. 
+                    // Available colors are "green", "yellow", "orange", "brown", 
+                    // "blue", "white", "black" and you can define your own colors with CSS.
+                    tabsColor: "beige",
+                    // Disable zooming of PDF document.< a href = "http://www.jqueryscript.net/zoom/" > Zoom < /a>
+                    disable: false,
+                    // Disable swipe to next/prev page of PDF document. 
+                    disableSwipe: false,
+                    // Disable all internal and external links on PDF document
+                    disableLinks: false,
+                    // Disable the arrow keys for next/previous page and +/- for zooming
+                    disableKeys: false,
+                    // Force resize of PDF viewer on window resize
+                    redrawOnWindowResize: true,
+                    // Show a toolbar on top of the document with title, 
+                    // page number and buttons for next/prev pages and zooming
+                    showToolbar: true,
+                    // A handler triggered when PDF document is loaded
+                    loaded: null,
+                    // A handler triggered each time a new page is displayed
+                    changed: null,
+                    // Text or HTML displayed on white page shown before document is loaded 
+                    loadingHeight: 841,
+                    // Height in px of white page shown before document is loaded 
+                    loadingWidth: 595,
+                    // Width in px of white page shown before document is loaded 
+                    loadingHTML: "Loading PDF"
+                });
+            });
+        </script>
+    </body>
+    <html>

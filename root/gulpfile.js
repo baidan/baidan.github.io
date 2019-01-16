@@ -50,7 +50,7 @@ var dev = {
 /*************************开发模式*************************/
 
 // 开发模式下静态服务器
-gulp.task('server:dev', function() {
+gulp.task('server:dev', function () {
     browserSync.init({
         server: {
             baseDir: dev.basePath,
@@ -66,16 +66,16 @@ gulp.task('server:dev', function() {
 
 });
 
-gulp.task('html:dev', function() {
+gulp.task('html:dev', function () {
     return gulp.src([dev.basePath + '**/*' + "*.html", '!' + dev.basePath + 'static'])
-        .pipe(gulp.dest(dev.basePath))
+        /* .pipe(gulp.dest(dev.basePath)) */
         .pipe(reload({
             stream: true
         }))
 
 });
 
-gulp.task('less', function() {
+gulp.task('less', function () {
     return gulp.src(dev.less + '*.less')
         .pipe(less()) //执行less
         .pipe(autoprefixer({ //兼容设置
@@ -87,30 +87,34 @@ gulp.task('less', function() {
         }))
 });
 
-gulp.task('css:dev', function() {
+gulp.task('css:dev', function () {
     return gulp.src([dev.css + '*.css', '!' + dev.css + '*.min.css']) //合并所有css文件 除了 style.min.css style.css
         .pipe(base64({ //图片转换base64
             maxImageSize: 8 * 1024, // 限制图片大小bytes 
         }))
         .pipe(gulp.dest(dev.css)) //输出一个未压缩版本
 
-    .pipe(cleanCss()) //压缩css
-        .pipe(rename({ extname: '.min.css' })) //压缩后的文件后面加上.min.css
+        .pipe(cleanCss()) //压缩css
+        .pipe(rename({
+            extname: '.min.css'
+        })) //压缩后的文件后面加上.min.css
         .pipe(gulp.dest(dev.css + "min")) //输出一个压缩版本
         .pipe(reload({
             stream: true
         }))
 });
 
-gulp.task('js:dev', function() {
+gulp.task('js:dev', function () {
     return gulp.src([dev.js + '*.js', '!' + dev.js + '*.min.js']) // 合并所有js文件 除了 script.js script.min.js
         .pipe(babel({ //使用babel转es6为es5
             presets: ['es2015']
         }))
         //.pipe(gulp.dest(dev.js))	//输出一个未压缩版本
 
-    .pipe(uglify()) //压缩js
-        .pipe(rename({ extname: '.min.js' })) //压缩后的文件后面加上.min.js
+        .pipe(uglify()) //压缩js
+        .pipe(rename({
+            extname: '.min.js'
+        })) //压缩后的文件后面加上.min.js
         .pipe(gulp.dest(dev.js + "min")) //输出一个压缩版本
         .pipe(reload({
             stream: true
@@ -122,7 +126,7 @@ gulp.task('js:dev', function() {
 
 /*************************生产模式*************************/
 //生产模式下的服务器
-gulp.task('server:test', function() {
+gulp.task('server:test', function () {
     runSequence("publish:html");
     runSequence([
         'publish:css_min',
@@ -143,7 +147,7 @@ gulp.task('server:test', function() {
 });
 
 //压缩图片，只限jpg和png
-gulp.task('imagesmin', function() {
+gulp.task('imagesmin', function () {
     return gulp.src(dev.images + '*.*')
         .pipe(imagemin())
         .pipe(gulp.dest(build.images))
@@ -151,7 +155,7 @@ gulp.task('imagesmin', function() {
 
 
 //压缩HTML
-gulp.task('publish:html', function() {
+gulp.task('publish:html', function () {
     return gulp.src([
             dev.basePath + '**/*' + "*.html", '!' + dev.basePath + 'static'
         ])
@@ -171,7 +175,7 @@ gulp.task('publish:html', function() {
         .pipe(gulp.dest(build.basePath))
 });
 
-gulp.task('publish:css_min', function() {
+gulp.task('publish:css_min', function () {
     return gulp.src([dev.css + 'min/**/*'])
         .pipe(rev()) //set hash key
         .pipe(gulp.dest(build.css))
@@ -179,32 +183,32 @@ gulp.task('publish:css_min', function() {
         .pipe(gulp.dest('./rev/css/')) //dest hash key json
 });
 
-gulp.task('publish:css_lib', function() {
+gulp.task('publish:css_lib', function () {
     return gulp.src([dev.css + 'lib/**/*'])
         .pipe(gulp.dest(build.css + 'lib'))
 });
 
 
-gulp.task('publish:images', function() {
+gulp.task('publish:images', function () {
     return gulp.src([dev.images + '**/*'])
         .pipe(gulp.dest(build.images))
-        // 目录结构排除：gulp.src([dev.images + '**/*','!'+dev.images+'page*']) gulp.src([dev.images+'spritesheet.png',dev.images+'*'])
+    // 目录结构排除：gulp.src([dev.images + '**/*','!'+dev.images+'page*']) gulp.src([dev.images+'spritesheet.png',dev.images+'*'])
 });
 
-gulp.task('publish:fonts', function() {
+gulp.task('publish:fonts', function () {
     return gulp.src([dev.fonts + '**/*'])
         .pipe(gulp.dest(build.fonts))
-        // 目录结构排除：gulp.src([dev.images + '**/*','!'+dev.images+'page*']) gulp.src([dev.images+'spritesheet.png',dev.images+'*'])
+    // 目录结构排除：gulp.src([dev.images + '**/*','!'+dev.images+'page*']) gulp.src([dev.images+'spritesheet.png',dev.images+'*'])
 });
 
 
-gulp.task('publish:data', function() {
+gulp.task('publish:data', function () {
     return gulp.src([dev.data + '**/*'])
         .pipe(gulp.dest(build.data))
-        // 目录结构排除：gulp.src([dev.images + '**/*','!'+dev.images+'page*']) gulp.src([dev.images+'spritesheet.png',dev.images+'*'])
+    // 目录结构排除：gulp.src([dev.images + '**/*','!'+dev.images+'page*']) gulp.src([dev.images+'spritesheet.png',dev.images+'*'])
 });
 
-gulp.task('publish:js_min', function() {
+gulp.task('publish:js_min', function () {
     return gulp.src([dev.js + 'min/**/*'])
         .pipe(rev()) //发布新版本
         .pipe(gulp.dest(build.js))
@@ -212,20 +216,20 @@ gulp.task('publish:js_min', function() {
         .pipe(gulp.dest('./rev/js/'))
 });
 
-gulp.task('publish:js_lib', function() {
+gulp.task('publish:js_lib', function () {
     return gulp.src([dev.js + 'lib/**/*'])
         .pipe(gulp.dest(build.js + 'lib'))
 });
 
 //删除生产下所有文件
-gulp.task('server:del', function() {
+gulp.task('server:del', function () {
     return del([
         build.basePath
     ]);
 });
 
 //版本控制自动解决依赖
-gulp.task('rev', function() {
+gulp.task('rev', function () {
     return gulp.src(['./rev/**/*.json', build.basePath + '**/*' + "*.html", '!' + build.basePath + 'static'])
         .pipe(revCollector({
             replaceReved: true
